@@ -1,4 +1,4 @@
-ts	1423882912000
+ts	1423905919000
 Default-Landscape.png	513333
 Default-Portrait.png	76153
 Default.png	110858
@@ -8,16 +8,20 @@ alloy
 	constants.js	6654
 	controllers
 		BaseController.js	7259
-		index.js	2709
-		schoolList.js	2953
+		courseList.js	3418
+		deptList.js	3235
+		index.js	1181
+		schoolList.js	3165
 	models
 		Connection.js	1365
 		Course.js	729
-		Dept.js	713
+		Dept.js	754
 		School.js	793
 	styles
+		courseList.js	87
+		deptList.js	111
 		index.js	220
-		schoolList.js	204
+		schoolList.js	20
 	sync
 		localStorage.js	1913
 		properties.js	1848

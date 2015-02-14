@@ -1,0 +1,12 @@
+<Alloy>
+	<Collection src="Course"></Collection>
+	<Window class="container">
+		<Picker>
+			<Row title="2015Spring"/>
+			<Row title="2014Fall"/>
+		</Picker>
+		<TableView dataCollection="Course">
+			<TableViewRow title="{SOC_DEPARTMENT_DESCRIPTION}"></TableViewRow>
+		</TableView>
+	</Window>
+</Alloy>

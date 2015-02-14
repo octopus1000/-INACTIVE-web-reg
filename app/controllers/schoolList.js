@@ -1,54 +1,32 @@
-//var args = arguments[0] || {};
+var schools = Alloy.Collections.School;
 
+fetchSchoolList(schools);
 
-//create department collection
-var depts = Alloy.createCollection("Dept");
-var data = [];
-var isDisplayed = false;
-var restAdaptorModel = Alloy.createModel("Connection");
-
-function majorDisplay(e){
-	var deptsView = e.source;
-	var rows = deptsView.getRows();
-	var schoolDetail;
-	
-	// $model represents the current model accessible to this
-	// controller from the markup's model-view binding. $model
-	// will be null if no binding.	
-	if(!data.length && $model){
-		schoolDetail = Alloy.createModel("Connection");
-		schoolDetail.setDir("Schools/" + $model.get("SOC_SCHOOL_CODE"));
-		
-		schoolDetail.fetch({
-			success : function() {
-				//set up department
-				depts.reset(schoolDetail.get("SOC_DEPARTMENT_CODE"));
-				console.log(schoolDetail.get("SOC_SCHOOL_CODE") + ":" + schoolDetail.get("SOC_SCHOOL_CODE").length);
-
-				_.each(depts.models,function(dept){
-					var title = dept.get('SOC_DEPARTMENT_DESCRIPTION');
-					var row = Ti.UI.createTableViewRow({
-						"title" : title,
-					});
-					row.applyProperties($.createStyle({
-						height : "20dp"
-					}));
-					data.push(row);
-				});					
-				deptsView.add(data);
-				isDisplayed = true; 
-
-			},
-			erro:function(){
-				;
-			}
-		}); 
-	}
-	else if(rows){
-		while(deptsView.getRowCount() > 0){
-			var row = deptsView.getRows()[0];
-			deptsView.remove(row);
+function fetchSchoolList() {
+	var conn = Alloy.createCollection("Connection");
+	conn.setDir("Schools");
+	//the fetch method is an async call to the remote REST API.
+	conn.fetch({
+		success : function() {
+			_.each(conn.models, function(elem) {
+				schools.add(Alloy.createModel("School", {
+					SOC_SCHOOL_CODE : elem.get("SOC_SCHOOL_CODE"),
+					SOC_SCHOOL_DESCRIPTION : elem.get("SOC_SCHOOL_DESCRIPTION"),
+				}));
+			});
+		},
+		error : function() {
+			Ti.API.error("hmm - this is not good!");
 		}
-		isDisplayed = !isDisplayed;
+	});
+}
+
+function showDeptList(e){
+	var model = schools.at(e.index);
+	if(model){//TableViewRow bound to a School model
+		var args = {
+			schoolcode:model.get("SOC_SCHOOL_CODE")
+		};
+		Alloy.createController("deptList",args).getView().open();
 	}
 }

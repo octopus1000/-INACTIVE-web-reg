@@ -1,8 +1,5 @@
 <Alloy>
-	<Collection src="School"/>
-	<Window class="container">
-		<TableView dataCollection="School">
-			<Require src = "schoolList"/>
-		</TableView>
+	<Window class = "container">
+		<Require src="schoolList"/>
 	</Window>
 </Alloy>

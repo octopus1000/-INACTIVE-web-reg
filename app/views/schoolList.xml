@@ -1,4 +1,6 @@
 <Alloy>
-	<TableViewSection id="deptList" headerTitle = "{SOC_SCHOOL_DESCRIPTION}" onClick="majorDisplay">
-	</TableViewSection>
+	<Collection src="School"></Collection>
+	<TableView id="schoolList" dataCollection="School" onClick="showDeptList">
+		<TableViewRow  title = "{SOC_SCHOOL_DESCRIPTION}"></TableViewRow>
+	</TableView>
 </Alloy>
