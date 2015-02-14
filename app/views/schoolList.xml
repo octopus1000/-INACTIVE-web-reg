@@ -1,0 +1,4 @@
+<Alloy>
+	<TableViewSection id="deptList" headerTitle = "{SOC_SCHOOL_DESCRIPTION}" onClick="majorDisplay">
+	</TableViewSection>
+</Alloy>
