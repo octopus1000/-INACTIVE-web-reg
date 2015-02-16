@@ -1,31 +1,32 @@
 var args = arguments[0] || {};
+
+var deptcode = args.deptcode;
 var courses = Alloy.Collections.Course;
 var term = "20151";
 
-//clear data in courses
-courses.reset({});
-if(args.deptcode){
-	fetchCourseList(args.deptcode);
+var newCourse = Alloy.createCollection("Course");
+newCourse.setDir(term + "/" + deptcode);
+newCourse.fetch({
+	success:function(){
+		console.log("fetch from" + newCourse.url() + ":"+ newCourse.models.length);
+		updateTable($.courseTable,newCourse.models);
+	}
+});
+
+function updateTable(table,courses){
+	var data=[];
+	for(var i= 0; i < courses.length; i++){
+		var row = Titanium.UI.createTableViewRow({
+			title:courses[i].get("SIS_COURSE_ID")
+		});
+		data.push(row);
+	}
+	console.log(data);
+	table.setData([]);
+	table.setData(data);
 }
 
-function fetchCourseList(deptcode) {
-	var conn = Alloy.createCollection("Connection");
-	//requrest url
-	conn.setDir("Courses/" + term +"/" + deptcode);
-	//get data
-	conn.fetch({
-		success : function() {
-			console.log(conn);
-			_.each(conn.models, function(elem){
-				courses.add(Alloy.createModel("Course",{
-					COURSE_ID:elem.COURSE_ID,
-					TITLE:elem.TITLE,
-					DESCRIPTION:elem.DESCRIPTION
-				}));
-			});
-		},
-		error : function() {
-			Ti.API.error("hmm - this is not good!");
-		}
-	});
-}
+
+
+
+

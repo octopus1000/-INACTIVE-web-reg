@@ -3,21 +3,25 @@ var Alloy = require("alloy"), _ = require("alloy/underscore")._, model, collecti
 exports.definition = {
     config: {
         adapter: {
-            type: "properties",
-            collection_name: "Course"
+            type: "restapi",
+            collection_name: "Course",
+            idAttribute: "COURSE_ID"
         }
     },
     extendModel: function(Model) {
-        _.extend(Model.prototype, {
-            defaults: {
-                id: "NULL",
-                name: "NULL"
-            }
-        });
+        _.extend(Model.prototype, {});
         return Model;
     },
     extendCollection: function(Collection) {
-        _.extend(Collection.prototype, {});
+        _.extend(Collection.prototype, {
+            urlRoot: "http://petri.esd.usc.edu/socAPI/Courses/",
+            setDir: function(dir) {
+                this.dir = dir;
+            },
+            url: function() {
+                return this.urlRoot + this.dir;
+            }
+        });
         return Collection;
     }
 };

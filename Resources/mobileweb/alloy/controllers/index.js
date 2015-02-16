@@ -28,11 +28,11 @@ function Controller() {
         id: "index"
     });
     $.__views.index && $.addTopLevelView($.__views.index);
-    $.__views.__alloyId20 = Alloy.createController("schoolList", {
-        id: "__alloyId20",
+    $.__views.__alloyId14 = Alloy.createController("schoolList", {
+        id: "__alloyId14",
         __parentSymbol: $.__views.index
     });
-    $.__views.__alloyId20.setParent($.__views.index);
+    $.__views.__alloyId14.setParent($.__views.index);
     exports.destroy = function() {};
     _.extend($, $.__views);
     $.index.open();

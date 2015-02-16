@@ -8,46 +8,49 @@ function __processArg(obj, key) {
 }
 
 function Controller() {
-    function __alloyId27(e) {
-        if (e && e.fromAdapter) return;
-        __alloyId27.opts || {};
-        var models = __alloyId26.models;
-        var len = models.length;
-        var rows = [];
-        for (var i = 0; len > i; i++) {
-            var __alloyId23 = models[i];
-            __alloyId23.__transform = {};
-            var __alloyId25 = Ti.UI.createTableViewRow({
-                title: "undefined" != typeof __alloyId23.__transform["SOC_SCHOOL_DESCRIPTION"] ? __alloyId23.__transform["SOC_SCHOOL_DESCRIPTION"] : __alloyId23.get("SOC_SCHOOL_DESCRIPTION")
+    function majorDisplay(e) {
+        var deptsView = e.source;
+        var rows = deptsView.getRows();
+        var schoolDetail;
+        if (!data.length && $model) {
+            schoolDetail = Alloy.createModel("Connection");
+            schoolDetail.setDir("Schools/" + $model.get("SOC_SCHOOL_CODE"));
+            schoolDetail.fetch({
+                success: function() {
+                    depts.reset(schoolDetail.get("SOC_DEPARTMENT_CODE"));
+                    console.log(schoolDetail.get("SOC_SCHOOL_CODE") + ":" + schoolDetail.get("SOC_SCHOOL_CODE").length);
+                    _.each(depts.models, function(dept) {
+                        var title = dept.get("SOC_DEPARTMENT_DESCRIPTION");
+                        var row = Ti.UI.createTableViewRow({
+                            title: title
+                        });
+                        row.applyProperties($.createStyle({
+                            height: "20dp"
+                        }));
+                        data.push(row);
+                    });
+                    deptsView.add(data);
+                    isDisplayed = true;
+                },
+                erro: function() {}
             });
+<<<<<<< HEAD
             rows.push(__alloyId25);
         }
         $.__views.schoolList.setData(rows);
-    }
-    function fetchSchoolList() {
-        var conn = Alloy.createCollection("Connection");
-        conn.setDir("Schools");
-        conn.fetch({
-            success: function() {
-                _.each(conn.models, function(elem) {
-                    schools.add(Alloy.createModel("School", {
-                        SOC_SCHOOL_CODE: elem.get("SOC_SCHOOL_CODE"),
-                        SOC_SCHOOL_DESCRIPTION: elem.get("SOC_SCHOOL_DESCRIPTION")
-                    }));
-                });
-            },
-            error: function() {
-                Ti.API.error("hmm - this is not good!");
-            }
-        });
     }
     function showDeptList(e) {
         var model = schools.at(e.index);
         if (model) {
             var args = {
-                schoolcode: model.get("SOC_SCHOOL_CODE")
+                school: model
             };
             Alloy.createController("deptList", args).getView().open();
+=======
+        } else if (rows) {
+            for (var i = 0; i < rows.length; i++) rows[i].hide();
+            isDisplayed = !isDisplayed;
+>>>>>>> parent of 3b2732f... seperate dept and school view
         }
     }
     require("alloy/controllers/BaseController").apply(this, Array.prototype.slice.call(arguments));
@@ -56,9 +59,7 @@ function Controller() {
         {
             __processArg(arguments[0], "__parentSymbol");
         }
-        {
-            __processArg(arguments[0], "$model");
-        }
+        var $model = __processArg(arguments[0], "$model");
         {
             __processArg(arguments[0], "__itemTemplate");
         }
@@ -66,21 +67,29 @@ function Controller() {
     var $ = this;
     var exports = {};
     var __defers = {};
-    Alloy.Collections.instance("School");
-    $.__views.schoolList = Ti.UI.createTableView({
-        id: "schoolList"
+    $.__views.deptList = Ti.UI.createTableViewSection({
+        id: "deptList",
+        headerTitle: "undefined" != typeof $model.__transform["SOC_SCHOOL_DESCRIPTION"] ? $model.__transform["SOC_SCHOOL_DESCRIPTION"] : $model.get("SOC_SCHOOL_DESCRIPTION")
     });
-    var __alloyId26 = Alloy.Collections["School"] || School;
-    __alloyId26.on("fetch destroy change add remove reset", __alloyId27);
-    $.__views.schoolList && $.addTopLevelView($.__views.schoolList);
-    showDeptList ? $.__views.schoolList.addEventListener("click", showDeptList) : __defers["$.__views.schoolList!click!showDeptList"] = true;
-    exports.destroy = function() {
-        __alloyId26.off("fetch destroy change add remove reset", __alloyId27);
-    };
+    $.__views.deptList && $.addTopLevelView($.__views.deptList);
+    majorDisplay ? $.__views.deptList.addEventListener("click", majorDisplay) : __defers["$.__views.deptList!click!majorDisplay"] = true;
+    exports.destroy = function() {};
     _.extend($, $.__views);
+<<<<<<< HEAD
     var schools = Alloy.Collections.School;
-    fetchSchoolList(schools);
+    schools.fetch({
+        success: function() {
+            console.log("schools fetched, length:" + schools.length);
+        }
+    });
     __defers["$.__views.schoolList!click!showDeptList"] && $.__views.schoolList.addEventListener("click", showDeptList);
+=======
+    var depts = Alloy.createCollection("Dept");
+    var data = [];
+    var isDisplayed = false;
+    Alloy.createModel("Connection");
+    __defers["$.__views.deptList!click!majorDisplay"] && $.__views.deptList.addEventListener("click", majorDisplay);
+>>>>>>> parent of 3b2732f... seperate dept and school view
     _.extend($, exports);
 }
 

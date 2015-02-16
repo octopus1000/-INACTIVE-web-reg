@@ -24,28 +24,11 @@ function Controller() {
         }
         $.__views.schoolList.setData(rows);
     }
-    function fetchSchoolList() {
-        var conn = Alloy.createCollection("Connection");
-        conn.setDir("Schools");
-        conn.fetch({
-            success: function() {
-                _.each(conn.models, function(elem) {
-                    schools.add(Alloy.createModel("School", {
-                        SOC_SCHOOL_CODE: elem.get("SOC_SCHOOL_CODE"),
-                        SOC_SCHOOL_DESCRIPTION: elem.get("SOC_SCHOOL_DESCRIPTION")
-                    }));
-                });
-            },
-            error: function() {
-                Ti.API.error("hmm - this is not good!");
-            }
-        });
-    }
     function showDeptList(e) {
         var model = schools.at(e.index);
         if (model) {
             var args = {
-                schoolcode: model.get("SOC_SCHOOL_CODE")
+                school: model
             };
             Alloy.createController("deptList", args).getView().open();
         }
@@ -79,7 +62,11 @@ function Controller() {
     };
     _.extend($, $.__views);
     var schools = Alloy.Collections.School;
-    fetchSchoolList(schools);
+    schools.fetch({
+        success: function() {
+            console.log("schools fetched, length:" + schools.length);
+        }
+    });
     __defers["$.__views.schoolList!click!showDeptList"] && $.__views.schoolList.addEventListener("click", showDeptList);
     _.extend($, exports);
 }

@@ -4,20 +4,21 @@ exports.definition = {
     config: {
         adapter: {
             type: "properties",
-            collection_name: "Course"
+            collection_name: "Course",
+            idAttribute: "COURSE_ID"
         }
     },
     extendModel: function(Model) {
-        _.extend(Model.prototype, {
-            defaults: {
-                id: "NULL",
-                name: "NULL"
-            }
-        });
+        _.extend(Model.prototype, {});
         return Model;
     },
     extendCollection: function(Collection) {
-        _.extend(Collection.prototype, {});
+        _.extend(Collection.prototype, {
+            urlRoot: "http://petri.esd.usc.edu/socAPI/Courses/",
+            url: function() {
+                return urlRoot + this.dir ? this.dir : "" + this.id ? this.id : "";
+            }
+        });
         return Collection;
     }
 };

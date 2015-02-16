@@ -10,7 +10,6 @@ exports.definition = {
     extendModel: function(Model) {
         _.extend(Model.prototype, {
             defaults: {
-                SOC_DEPARTMENT_CODE: "",
                 SOC_DEPARTMENT_DESCRIPTION: ""
             }
         });

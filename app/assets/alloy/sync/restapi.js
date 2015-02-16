@@ -232,8 +232,8 @@ function Sync(method, model, opts) {
 			break;
 
 		case 'read':
-			if (model[model.idAttribute]) {
-				params.url = params.url + '/' + model[model.idAttribute];
+			if (model.get(model.idAttribute)) {
+				params.url = params.url + '/' + model.get(model.idAttribute);
 			}
 
 			if (params.search) {

@@ -11,7 +11,7 @@ function Controller() {
     function __alloyId19(e) {
         if (e && e.fromAdapter) return;
         __alloyId19.opts || {};
-        var models = __alloyId18.models;
+        var models = filter(__alloyId18);
         var len = models.length;
         var rows = [];
         for (var i = 0; len > i; i++) {
@@ -24,18 +24,20 @@ function Controller() {
         }
         $.__views.__alloyId14.setData(rows);
     }
-    function fetchDeptList(schoolcode) {
-        var conn = Alloy.createModel("Connection");
-        conn.setDir("Schools/" + schoolcode);
-        conn.fetch({
-            success: function() {
-                console.log(conn);
-                depts.reset(conn.get("SOC_DEPARTMENT_CODE"));
-            },
-            error: function() {
-                Ti.API.error("hmm - this is not good!");
-            }
-        });
+    function filter(depts) {
+        return school ? depts.where({
+            SOC_SCHOOL_CODE: school.get("SOC_SCHOOL_CODE")
+        }) : depts.models;
+    }
+    function showCourseList(e) {
+        console.log(e.index);
+        var model = depts.at(e.index);
+        if (model) {
+            var args = {
+                deptcode: model.get("SOC_DEPARTMENT_CODE")
+            };
+            Alloy.createController("courseList", args).getView().open();
+        }
     }
     require("alloy/controllers/BaseController").apply(this, Array.prototype.slice.call(arguments));
     this.__controllerPath = "deptList";
@@ -52,6 +54,7 @@ function Controller() {
     }
     var $ = this;
     var exports = {};
+    var __defers = {};
     Alloy.Collections.instance("Dept");
     $.__views.deptList = Ti.UI.createWindow({
         backgroundColor: "white",
@@ -64,13 +67,21 @@ function Controller() {
     $.__views.deptList.add($.__views.__alloyId14);
     var __alloyId18 = Alloy.Collections["Dept"] || Dept;
     __alloyId18.on("fetch destroy change add remove reset", __alloyId19);
+    showCourseList ? $.__views.__alloyId14.addEventListener("click", showCourseList) : __defers["$.__views.__alloyId14!click!showCourseList"] = true;
     exports.destroy = function() {
         __alloyId18.off("fetch destroy change add remove reset", __alloyId19);
     };
     _.extend($, $.__views);
     var args = arguments[0] || {};
     var depts = Alloy.Collections.Dept;
-    args.schoolcode && fetchDeptList(args.schoolcode);
+    var school = args.school;
+    !school || void 0 != school.get("SOC_DEPARTMENT_CODE") && 0 != school.get("SOC_DEPARTMENT_CODE").length || school.fetch({
+        success: function() {
+            console.log("get department");
+            depts.add(school.get("SOC_DEPARTMENT_CODE"));
+        }
+    });
+    __defers["$.__views.__alloyId14!click!showCourseList"] && $.__views.__alloyId14.addEventListener("click", showCourseList);
     _.extend($, exports);
 }
 

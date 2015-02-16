@@ -140,7 +140,7 @@ function Sync(method, model, opts) {
         break;
 
       case "read":
-        model[model.idAttribute] && (params.url = params.url + "/" + model[model.idAttribute]);
+        model.get(model.idAttribute) && (params.url = params.url + "/" + model.get(model.idAttribute));
         params.search && (params.url = params.url + "/search/" + Ti.Network.encodeURIComponent(params.search));
         params.urlparams && (params.url = encodeData(params.urlparams, params.url));
         !params.urlparams && params.data && (params.url = encodeData(params.data, params.url));

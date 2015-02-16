@@ -1,4 +1,12 @@
-
 ".container" : {
-  
+	backgroundColor:"white"
+}
+
+".picker":{
+	top:"0dp",
+	height:"100dp"
+}
+
+".table":{
+	top:"100dp"
 }

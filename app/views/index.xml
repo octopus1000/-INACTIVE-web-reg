@@ -1,5 +1,5 @@
 <Alloy>
-	<Window class = "container">
-		<Require src="schoolList"/>
+	<Window class="container">
+		<Require src = "schoolList"/>
 	</Window>
 </Alloy>

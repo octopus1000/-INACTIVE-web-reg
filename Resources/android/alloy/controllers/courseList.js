@@ -70,7 +70,9 @@ function Controller() {
         __alloyId10.off("fetch destroy change add remove reset", __alloyId11);
     };
     _.extend($, $.__views);
-    arguments[0] || {};
+    var args = arguments[0] || {};
+    args.deptcode;
+    Alloy.Collections.Course;
     _.extend($, exports);
 }
 

@@ -2,19 +2,15 @@ var Alloy = require("alloy"), _ = require("alloy/underscore")._, model, collecti
 
 exports.definition = {
     config: {
+        URL: "http://petri.esd.usc.edu/socAPI/Schools/",
         adapter: {
-            type: "properties",
-            collection_name: "School"
+            type: "restapi",
+            collection_name: "School",
+            idAttribute: "SOC_SCHOOL_CODE"
         }
     },
     extendModel: function(Model) {
-        _.extend(Model.prototype, {
-            defaults: {
-                SOC_SCHOOL_CODE: "",
-                SOC_SCHOOL_DESCRIPTION: "",
-                SOC_DEPARTMENT_CODE: []
-            }
-        });
+        _.extend(Model.prototype, {});
         return Model;
     },
     extendCollection: function(Collection) {
