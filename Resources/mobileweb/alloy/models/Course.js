@@ -9,7 +9,18 @@ exports.definition = {
         }
     },
     extendModel: function(Model) {
-        _.extend(Model.prototype, {});
+        _.extend(Model.prototype, {
+            urlRoot: "http://petri.esd.usc.edu/socAPI/Courses/",
+            setDir: function(dir) {
+                this.dir = dir;
+            },
+            url: function() {
+                return this.urlRoot + this.dir;
+            },
+            title: function() {
+                return this.get("SIS_COURSE_ID") + " " + this.get("TITLE");
+            }
+        });
         return Model;
     },
     extendCollection: function(Collection) {

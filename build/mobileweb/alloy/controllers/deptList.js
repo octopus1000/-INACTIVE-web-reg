@@ -36,8 +36,11 @@ function Controller() {
             var args = {
                 deptcode: model.get("SOC_DEPARTMENT_CODE")
             };
-            Alloy.createController("courseList", args).getView().open();
+            Titanium.UI.currentTab.open(Alloy.createController("courseList", args).getView());
         }
+    }
+    function close() {
+        $.destroy();
     }
     require("alloy/controllers/BaseController").apply(this, Array.prototype.slice.call(arguments));
     this.__controllerPath = "deptList";
@@ -61,6 +64,7 @@ function Controller() {
         id: "deptList"
     });
     $.__views.deptList && $.addTopLevelView($.__views.deptList);
+    close ? $.__views.deptList.addEventListener("close", close) : __defers["$.__views.deptList!close!close"] = true;
     $.__views.__alloyId8 = Ti.UI.createTableView({
         id: "__alloyId8"
     });
@@ -81,6 +85,8 @@ function Controller() {
             depts.add(school.get("SOC_DEPARTMENT_CODE"));
         }
     });
+    depts.trigger("change");
+    __defers["$.__views.deptList!close!close"] && $.__views.deptList.addEventListener("close", close);
     __defers["$.__views.__alloyId8!click!showCourseList"] && $.__views.__alloyId8.addEventListener("click", showCourseList);
     _.extend($, exports);
 }

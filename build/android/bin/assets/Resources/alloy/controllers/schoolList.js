@@ -8,19 +8,19 @@ function __processArg(obj, key) {
 }
 
 function Controller() {
-    function __alloyId27(e) {
+    function __alloyId23(e) {
         if (e && e.fromAdapter) return;
-        __alloyId27.opts || {};
-        var models = __alloyId26.models;
+        __alloyId23.opts || {};
+        var models = __alloyId22.models;
         var len = models.length;
         var rows = [];
         for (var i = 0; len > i; i++) {
-            var __alloyId23 = models[i];
-            __alloyId23.__transform = {};
-            var __alloyId25 = Ti.UI.createTableViewRow({
-                title: "undefined" != typeof __alloyId23.__transform["SOC_SCHOOL_DESCRIPTION"] ? __alloyId23.__transform["SOC_SCHOOL_DESCRIPTION"] : __alloyId23.get("SOC_SCHOOL_DESCRIPTION")
+            var __alloyId19 = models[i];
+            __alloyId19.__transform = {};
+            var __alloyId21 = Ti.UI.createTableViewRow({
+                title: "undefined" != typeof __alloyId19.__transform["SOC_SCHOOL_DESCRIPTION"] ? __alloyId19.__transform["SOC_SCHOOL_DESCRIPTION"] : __alloyId19.get("SOC_SCHOOL_DESCRIPTION")
             });
-            rows.push(__alloyId25);
+            rows.push(__alloyId21);
         }
         $.__views.schoolList.setData(rows);
     }
@@ -30,7 +30,7 @@ function Controller() {
             var args = {
                 school: model
             };
-            Alloy.createController("deptList", args).getView().open();
+            Titanium.UI.currentTab.open(Alloy.createController("deptList", args).getView());
         }
     }
     require("alloy/controllers/BaseController").apply(this, Array.prototype.slice.call(arguments));
@@ -53,12 +53,12 @@ function Controller() {
     $.__views.schoolList = Ti.UI.createTableView({
         id: "schoolList"
     });
-    var __alloyId26 = Alloy.Collections["School"] || School;
-    __alloyId26.on("fetch destroy change add remove reset", __alloyId27);
+    var __alloyId22 = Alloy.Collections["School"] || School;
+    __alloyId22.on("fetch destroy change add remove reset", __alloyId23);
     $.__views.schoolList && $.addTopLevelView($.__views.schoolList);
     showDeptList ? $.__views.schoolList.addEventListener("click", showDeptList) : __defers["$.__views.schoolList!click!showDeptList"] = true;
     exports.destroy = function() {
-        __alloyId26.off("fetch destroy change add remove reset", __alloyId27);
+        __alloyId22.off("fetch destroy change add remove reset", __alloyId23);
     };
     _.extend($, $.__views);
     var schools = Alloy.Collections.School;

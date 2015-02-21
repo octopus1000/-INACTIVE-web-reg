@@ -1,6 +1,6 @@
 <Alloy>
 	<Collection src="Dept"></Collection>
-	<Window class="container">
+	<Window class="container" onClose="close">
 		<TableView dataCollection="Dept" dataFilter="filter" onClick="showCourseList">
 			<TableViewRow title="{SOC_DEPARTMENT_DESCRIPTION}"></TableViewRow>
 		</TableView>

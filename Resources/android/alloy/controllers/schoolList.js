@@ -8,34 +8,19 @@ function __processArg(obj, key) {
 }
 
 function Controller() {
-    function majorDisplay(e) {
-        var deptsView = e.source;
-        var rows = deptsView.getRows();
-        var schoolDetail;
-        if (!data.length && $model) {
-            schoolDetail = Alloy.createModel("Connection");
-            schoolDetail.setDir("Schools/" + $model.get("SOC_SCHOOL_CODE"));
-            schoolDetail.fetch({
-                success: function() {
-                    depts.reset(schoolDetail.get("SOC_DEPARTMENT_CODE"));
-                    console.log(schoolDetail.get("SOC_SCHOOL_CODE") + ":" + schoolDetail.get("SOC_SCHOOL_CODE").length);
-                    _.each(depts.models, function(dept) {
-                        var title = dept.get("SOC_DEPARTMENT_DESCRIPTION");
-                        var row = Ti.UI.createTableViewRow({
-                            title: title
-                        });
-                        row.applyProperties($.createStyle({
-                            height: "20dp"
-                        }));
-                        data.push(row);
-                    });
-                    deptsView.add(data);
-                    isDisplayed = true;
-                },
-                erro: function() {}
+    function __alloyId23(e) {
+        if (e && e.fromAdapter) return;
+        __alloyId23.opts || {};
+        var models = __alloyId22.models;
+        var len = models.length;
+        var rows = [];
+        for (var i = 0; len > i; i++) {
+            var __alloyId19 = models[i];
+            __alloyId19.__transform = {};
+            var __alloyId21 = Ti.UI.createTableViewRow({
+                title: "undefined" != typeof __alloyId19.__transform["SOC_SCHOOL_DESCRIPTION"] ? __alloyId19.__transform["SOC_SCHOOL_DESCRIPTION"] : __alloyId19.get("SOC_SCHOOL_DESCRIPTION")
             });
-<<<<<<< HEAD
-            rows.push(__alloyId25);
+            rows.push(__alloyId21);
         }
         $.__views.schoolList.setData(rows);
     }
@@ -45,12 +30,7 @@ function Controller() {
             var args = {
                 school: model
             };
-            Alloy.createController("deptList", args).getView().open();
-=======
-        } else if (rows) {
-            for (var i = 0; i < rows.length; i++) rows[i].hide();
-            isDisplayed = !isDisplayed;
->>>>>>> parent of 3b2732f... seperate dept and school view
+            Titanium.UI.currentTab.open(Alloy.createController("deptList", args).getView());
         }
     }
     require("alloy/controllers/BaseController").apply(this, Array.prototype.slice.call(arguments));
@@ -59,7 +39,9 @@ function Controller() {
         {
             __processArg(arguments[0], "__parentSymbol");
         }
-        var $model = __processArg(arguments[0], "$model");
+        {
+            __processArg(arguments[0], "$model");
+        }
         {
             __processArg(arguments[0], "__itemTemplate");
         }
@@ -67,15 +49,18 @@ function Controller() {
     var $ = this;
     var exports = {};
     var __defers = {};
-    $.__views.deptList = Ti.UI.createTableViewSection({
-        id: "deptList",
-        headerTitle: "undefined" != typeof $model.__transform["SOC_SCHOOL_DESCRIPTION"] ? $model.__transform["SOC_SCHOOL_DESCRIPTION"] : $model.get("SOC_SCHOOL_DESCRIPTION")
+    Alloy.Collections.instance("School");
+    $.__views.schoolList = Ti.UI.createTableView({
+        id: "schoolList"
     });
-    $.__views.deptList && $.addTopLevelView($.__views.deptList);
-    majorDisplay ? $.__views.deptList.addEventListener("click", majorDisplay) : __defers["$.__views.deptList!click!majorDisplay"] = true;
-    exports.destroy = function() {};
+    var __alloyId22 = Alloy.Collections["School"] || School;
+    __alloyId22.on("fetch destroy change add remove reset", __alloyId23);
+    $.__views.schoolList && $.addTopLevelView($.__views.schoolList);
+    showDeptList ? $.__views.schoolList.addEventListener("click", showDeptList) : __defers["$.__views.schoolList!click!showDeptList"] = true;
+    exports.destroy = function() {
+        __alloyId22.off("fetch destroy change add remove reset", __alloyId23);
+    };
     _.extend($, $.__views);
-<<<<<<< HEAD
     var schools = Alloy.Collections.School;
     schools.fetch({
         success: function() {
@@ -83,13 +68,6 @@ function Controller() {
         }
     });
     __defers["$.__views.schoolList!click!showDeptList"] && $.__views.schoolList.addEventListener("click", showDeptList);
-=======
-    var depts = Alloy.createCollection("Dept");
-    var data = [];
-    var isDisplayed = false;
-    Alloy.createModel("Connection");
-    __defers["$.__views.deptList!click!majorDisplay"] && $.__views.deptList.addEventListener("click", majorDisplay);
->>>>>>> parent of 3b2732f... seperate dept and school view
     _.extend($, exports);
 }
 

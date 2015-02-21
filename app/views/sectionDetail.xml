@@ -1,0 +1,8 @@
+<Alloy>
+	<ScrollView class="container" layout="vertical">
+		<Label>Section</Label>
+		<Label id = "secId"></Label>
+		<Label>Type</Label>
+		<Label id = "secType"></Label>
+	</ScrollView>
+</Alloy>

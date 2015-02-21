@@ -11,6 +11,7 @@ if(school && (school.get("SOC_DEPARTMENT_CODE") == undefined || school.get("SOC_
 		}
 	});
 }
+depts.trigger("change");
 
 function filter(depts){
 	return school ? depts.where({SOC_SCHOOL_CODE:school.get("SOC_SCHOOL_CODE")}) : depts.models;
@@ -24,6 +25,11 @@ function showCourseList(e){
 		var args = {
 			deptcode:model.get("SOC_DEPARTMENT_CODE")
 		};
-		Alloy.createController("courseList",args).getView().open();
+		Titanium.UI.currentTab.open(Alloy.createController("courseList",args).getView());
+		//Alloy.createController("courseList",args).getView().open();
 	}	
+}
+
+function close(){
+	$.destroy();
 }

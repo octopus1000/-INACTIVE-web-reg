@@ -1,0 +1,10 @@
+
+".container" : {
+	width: "auto",
+	height: "auto" 
+},
+
+"Label":{
+	width:"auto",
+	height:"auto"
+}

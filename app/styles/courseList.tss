@@ -1,12 +1,10 @@
 ".container" : {
 	backgroundColor:"white"
-}
-
+},
 ".picker":{
 	top:"0dp",
 	height:"100dp"
-}
-
-".table":{
+},
+"#courseTable":{
 	top:"100dp"
 }

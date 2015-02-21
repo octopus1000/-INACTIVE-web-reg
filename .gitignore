@@ -1,3 +1,9 @@
+# directories
+build
+platform
+plugins
+Resources
+
 # Windows image file caches
 Thumbs.db
 ehthumbs.db

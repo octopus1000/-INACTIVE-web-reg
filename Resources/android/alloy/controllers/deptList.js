@@ -8,21 +8,21 @@ function __processArg(obj, key) {
 }
 
 function Controller() {
-    function __alloyId19(e) {
+    function __alloyId13(e) {
         if (e && e.fromAdapter) return;
-        __alloyId19.opts || {};
-        var models = filter(__alloyId18);
+        __alloyId13.opts || {};
+        var models = filter(__alloyId12);
         var len = models.length;
         var rows = [];
         for (var i = 0; len > i; i++) {
-            var __alloyId15 = models[i];
-            __alloyId15.__transform = {};
-            var __alloyId17 = Ti.UI.createTableViewRow({
-                title: "undefined" != typeof __alloyId15.__transform["SOC_DEPARTMENT_DESCRIPTION"] ? __alloyId15.__transform["SOC_DEPARTMENT_DESCRIPTION"] : __alloyId15.get("SOC_DEPARTMENT_DESCRIPTION")
+            var __alloyId9 = models[i];
+            __alloyId9.__transform = {};
+            var __alloyId11 = Ti.UI.createTableViewRow({
+                title: "undefined" != typeof __alloyId9.__transform["SOC_DEPARTMENT_DESCRIPTION"] ? __alloyId9.__transform["SOC_DEPARTMENT_DESCRIPTION"] : __alloyId9.get("SOC_DEPARTMENT_DESCRIPTION")
             });
-            rows.push(__alloyId17);
+            rows.push(__alloyId11);
         }
-        $.__views.__alloyId14.setData(rows);
+        $.__views.__alloyId8.setData(rows);
     }
     function filter(depts) {
         return school ? depts.where({
@@ -30,13 +30,13 @@ function Controller() {
         }) : depts.models;
     }
     function showCourseList(e) {
-        console.log(e.index);
-        var model = depts.at(e.index);
+        var filteredDepts = filter(depts);
+        var model = filteredDepts[e.index];
         if (model) {
             var args = {
                 deptcode: model.get("SOC_DEPARTMENT_CODE")
             };
-            Alloy.createController("courseList", args).getView().open();
+            Titanium.UI.currentTab.open(Alloy.createController("courseList", args).getView());
         }
     }
     require("alloy/controllers/BaseController").apply(this, Array.prototype.slice.call(arguments));
@@ -61,15 +61,15 @@ function Controller() {
         id: "deptList"
     });
     $.__views.deptList && $.addTopLevelView($.__views.deptList);
-    $.__views.__alloyId14 = Ti.UI.createTableView({
-        id: "__alloyId14"
+    $.__views.__alloyId8 = Ti.UI.createTableView({
+        id: "__alloyId8"
     });
-    $.__views.deptList.add($.__views.__alloyId14);
-    var __alloyId18 = Alloy.Collections["Dept"] || Dept;
-    __alloyId18.on("fetch destroy change add remove reset", __alloyId19);
-    showCourseList ? $.__views.__alloyId14.addEventListener("click", showCourseList) : __defers["$.__views.__alloyId14!click!showCourseList"] = true;
+    $.__views.deptList.add($.__views.__alloyId8);
+    var __alloyId12 = Alloy.Collections["Dept"] || Dept;
+    __alloyId12.on("fetch destroy change add remove reset", __alloyId13);
+    showCourseList ? $.__views.__alloyId8.addEventListener("click", showCourseList) : __defers["$.__views.__alloyId8!click!showCourseList"] = true;
     exports.destroy = function() {
-        __alloyId18.off("fetch destroy change add remove reset", __alloyId19);
+        __alloyId12.off("fetch destroy change add remove reset", __alloyId13);
     };
     _.extend($, $.__views);
     var args = arguments[0] || {};
@@ -81,7 +81,7 @@ function Controller() {
             depts.add(school.get("SOC_DEPARTMENT_CODE"));
         }
     });
-    __defers["$.__views.__alloyId14!click!showCourseList"] && $.__views.__alloyId14.addEventListener("click", showCourseList);
+    __defers["$.__views.__alloyId8!click!showCourseList"] && $.__views.__alloyId8.addEventListener("click", showCourseList);
     _.extend($, exports);
 }
 

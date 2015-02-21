@@ -8,17 +8,62 @@ function __processArg(obj, key) {
 }
 
 function Controller() {
+    function fetchTerm() {
+        var termUrl = "http://petri.esd.usc.edu/socAPI/Terms";
+        var client = Ti.Network.createHTTPClient({
+            onload: function() {
+                setTerm(this.responseText);
+            },
+            onerror: function(e) {
+                Ti.API.debug(e.error);
+                alert("error");
+            },
+            timeout: 5e3
+        });
+        client.open("GET", termUrl, false);
+        client.setRequestHeader("Content-Type", "application/json");
+        client.send();
+    }
+    function setTerm(text) {
+        JSON.parse(text);
+    }
+    function fetchCourse(term, deptcode) {
+        newCourse = Alloy.createCollection("Course");
+        newCourse.setDir(term + "/" + deptcode);
+        newCourse.fetch({
+            success: function() {
+                console.log("fetch from" + newCourse.url() + ":" + newCourse.models.length);
+                updateTable($.courseTable, newCourse.models);
+            }
+        });
+    }
     function updateTable(table, courses) {
         var data = [];
         for (var i = 0; i < courses.length; i++) {
             var row = Titanium.UI.createTableViewRow({
-                title: courses[i].get("SIS_COURSE_ID")
+                title: courses[i].title()
             });
             data.push(row);
         }
         console.log(data);
         table.setData([]);
         table.setData(data);
+    }
+    function changeTerm(e) {
+        console.log(e.selectedValue[0]);
+        fetchCourse(e.selectedValue[0], deptcode);
+    }
+    function showCourseDetail(e) {
+        var model = newCourse.at(e.index);
+        if (model) {
+            model.setDir(term + "/");
+            var args = {
+                course: model
+            };
+            Titanium.UI.currentTab.open(Alloy.createController("courseDetail", args).getView(), {
+                animated: true
+            });
+        }
     }
     require("alloy/controllers/BaseController").apply(this, Array.prototype.slice.call(arguments));
     this.__controllerPath = "courseList";
@@ -35,6 +80,7 @@ function Controller() {
     }
     var $ = this;
     var exports = {};
+    var __defers = {};
     Alloy.Collections.instance("Course");
     $.__views.courseList = Ti.UI.createWindow({
         backgroundColor: "white",
@@ -49,34 +95,33 @@ function Controller() {
     $.__views.courseList.add($.__views.__alloyId2);
     var __alloyId3 = [];
     $.__views.__alloyId4 = Ti.UI.createPickerRow({
-        title: "2015spring",
+        title: "20151",
         id: "__alloyId4"
     });
     __alloyId3.push($.__views.__alloyId4);
     $.__views.__alloyId5 = Ti.UI.createPickerRow({
-        title: "2014fall",
+        title: "20143",
         id: "__alloyId5"
     });
     __alloyId3.push($.__views.__alloyId5);
     $.__views.__alloyId2.add(__alloyId3);
+    changeTerm ? $.__views.__alloyId2.addEventListener("change", changeTerm) : __defers["$.__views.__alloyId2!change!changeTerm"] = true;
     $.__views.courseTable = Ti.UI.createTableView({
+        top: "100dp",
         id: "courseTable"
     });
     $.__views.courseList.add($.__views.courseTable);
+    showCourseDetail ? $.__views.courseTable.addEventListener("click", showCourseDetail) : __defers["$.__views.courseTable!click!showCourseDetail"] = true;
     exports.destroy = function() {};
     _.extend($, $.__views);
     var args = arguments[0] || {};
     var deptcode = args.deptcode;
-    Alloy.Collections.Course;
     var term = "20151";
-    var newCourse = Alloy.createCollection("Course");
-    newCourse.setDir(term + "/" + deptcode);
-    newCourse.fetch({
-        success: function() {
-            console.log("fetch from" + newCourse.url() + ":" + newCourse.models.length);
-            updateTable($.courseTable, newCourse.models);
-        }
-    });
+    var newCourse;
+    fetchCourse(term, deptcode);
+    fetchTerm();
+    __defers["$.__views.__alloyId2!change!changeTerm"] && $.__views.__alloyId2.addEventListener("change", changeTerm);
+    __defers["$.__views.courseTable!click!showCourseDetail"] && $.__views.courseTable.addEventListener("click", showCourseDetail);
     _.extend($, exports);
 }
 

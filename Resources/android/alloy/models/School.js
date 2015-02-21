@@ -10,17 +10,7 @@ exports.definition = {
         }
     },
     extendModel: function(Model) {
-<<<<<<< HEAD
         _.extend(Model.prototype, {});
-=======
-        _.extend(Model.prototype, {
-            defaults: {
-                SOC_SCHOOL_CODE: "NULL",
-                SOC_SCHOOL_DESCRIPTION: "NULL",
-                SOC_DEPARTMENT_CODE: []
-            }
-        });
->>>>>>> parent of 3b2732f... seperate dept and school view
         return Model;
     },
     extendCollection: function(Collection) {
