@@ -1,13 +1,14 @@
 var args = arguments[0] || {};
 
-var deptcode = args.deptcode;
+var dept = args.dept;
 //here's a consideration, each time not removing the old coursed but add to collection and filter
 //var courses = Alloy.Collections.Course;
 var term = "20151";//This should be get from today's time
 var newCourse;
 
-fetchCourse(term,deptcode);
+fetchCourse(term,dept.get("SOC_DEPARTMENT_CODE"));
 fetchTerm();
+$.deptLabel.setText(dept.get("SOC_DEPARTMENT_DESCRIPTION"));
 
 //get an array of active or available terms
 function fetchTerm(){

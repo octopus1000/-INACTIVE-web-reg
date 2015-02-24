@@ -1,0 +1,20 @@
+
+".container" : {
+  
+},
+
+".row":{
+	layout:"horizontal",
+	height:"50dp",
+	horizontalWrap:false,
+	width:"100%"
+},
+
+"Label":{
+	width:"60%",
+	height:"24sp"
+},
+
+"Button":{
+	width:"100dp"
+}

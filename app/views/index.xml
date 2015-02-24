@@ -6,9 +6,7 @@
 			</Window>
 		</Tab>
 		<Tab id="tab2" title="My Courses">
-			<Window  class="container">
-				<Label>My Courses View</Label>
-			</Window>
+			<Require src="courseBinDetail"></Require>
 		</Tab>
 	</TabGroup>
 </Alloy>

@@ -1,0 +1,9 @@
+<Alloy>
+	<TableViewRow>
+		<View class="row">
+			<Label>{SIS_COURSE_ID}</Label>
+			<Button>Register</Button>
+			<Button onClick="remove">Remove</Button>
+		</View>
+	</TableViewRow>
+</Alloy>

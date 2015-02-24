@@ -1,8 +1,8 @@
 # directories
-build
-platform
-plugins
-Resources
+build/*
+platform/*
+plugins/*
+Resources/*
 
 # Windows image file caches
 Thumbs.db

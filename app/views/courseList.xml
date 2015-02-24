@@ -1,7 +1,8 @@
 <Alloy>
 	<Collection src="Course"></Collection>
-	<Window class="container">
-		<Picker class="picker" onChange="changeTerm">
+	<Window class="container" layout="vertical">
+		<Label id="deptLabel">(department name)</Label>
+		<Picker onChange="changeTerm">
 			<Row title = "20151"/>
 			<Row title = "20143"/>
 		</Picker>

@@ -1,0 +1,9 @@
+<Alloy>
+	<Collection src="CBin"></Collection>
+	<Window class="container">
+		<TableView dataCollection="CBin">
+			<Require src="courseBinRow">
+			</Require>
+		</TableView>
+	</Window>
+</Alloy>

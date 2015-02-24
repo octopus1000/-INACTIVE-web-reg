@@ -1,4 +1,15 @@
 
 ".container" : {
 	backgroundColor:"white" 
+},
+
+"#schoolLabel":{
+	textAlign:"left",
+	top:"6sp",
+	bottom:"6sp",
+	font:{
+		fontSize:"12sp",
+		fontFamily:"Helvetica",
+		fontWeight:"bold"
+	}
 }
