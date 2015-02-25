@@ -5,8 +5,10 @@ var dept = args.dept;
 //var courses = Alloy.Collections.Course;
 var term = "20151";//This should be get from today's time
 var newCourse;
+var deptcode;
 
-fetchCourse(term,dept.get("SOC_DEPARTMENT_CODE"));
+deptcode = dept.get("SOC_DEPARTMENT_CODE");
+fetchCourse(term,deptcode,$.courseTable);
 fetchTerm();
 $.deptLabel.setText(dept.get("SOC_DEPARTMENT_DESCRIPTION"));
 
@@ -33,8 +35,10 @@ function setTerm(text){
 	var obj = JSON.parse(text);
 }
 
+
 //get courses list under a department and certain term
-function fetchCourse(term, deptcode) {
+function fetchCourse(term, deptcode,table) {
+	table.setData([]);//clear datas in table
 	newCourse = Alloy.createCollection("Course");
 	newCourse.setDir(term + "/" + deptcode);
 	newCourse.fetch({
@@ -56,14 +60,14 @@ function updateTable(table,courses){
 		data.push(row);
 	}
 	console.log(data);
-	table.setData([]);
+	$.indicator.hide();
 	table.setData(data);
 }
 
 //fired when user change term using <picker>
 function changeTerm(e){
 	console.log(e.selectedValue[0]);
-	fetchCourse(e.selectedValue[0],deptcode);
+	fetchCourse(e.selectedValue[0],deptcode,$.courseTable);
 }
 
 //fired when click course row
@@ -76,5 +80,9 @@ function showCourseDetail(e){
 		};
 		Titanium.UI.currentTab.open(Alloy.createController("courseDetail",args).getView(),{animated : true});
 	}
+}
+
+function showIndicator(){
+	 $.indicator.show();
 }
 

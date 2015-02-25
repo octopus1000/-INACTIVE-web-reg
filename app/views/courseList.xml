@@ -1,11 +1,14 @@
 <Alloy>
 	<Collection src="Course"></Collection>
-	<Window class="container" layout="vertical">
+	
+	<Window class="container" onOpen="showIndicator" layout="vertical">
 		<Label id="deptLabel">(department name)</Label>
 		<Picker onChange="changeTerm">
 			<Row title = "20151"/>
 			<Row title = "20143"/>
 		</Picker>
+		<!--indicator appear when loading course-->
+		<ActivityIndicator id="indicator" message="Loading..."/>
 		<TableView id="courseTable" onClick="showCourseDetail">
 		</TableView>
 	</Window>
