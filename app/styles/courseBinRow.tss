@@ -7,14 +7,15 @@
 	layout:"horizontal",
 	height:"50dp",
 	horizontalWrap:false,
-	width:"100%"
+	width:"200%",
+	left:"0dp"
 },
 
 "Label":{
-	width:"60%",
+	width:"50%",
 	height:"24sp"
 },
 
 "Button":{
-	width:"100dp"
+	width:"50dp"
 }

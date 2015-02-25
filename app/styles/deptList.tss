@@ -2,7 +2,9 @@
 ".container" : {
 	backgroundColor:"white" 
 },
-
+"TableViewRow":{
+	hasChild:true
+},
 "#schoolLabel":{
 	textAlign:"left",
 	top:"6sp",
