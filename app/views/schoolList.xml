@@ -1,0 +1,7 @@
+<Alloy>
+	<Collection src="School"></Collection>
+	<TableView id="schoolList" title="Schools" dataCollection="School" onClick="showDeptList" dataTransform = "transColor">
+		 			<SearchBar id="search" top= 0 borderColor = "#C7C7CC" height = 15 />					
+		<TableViewRow title = "{SOC_SCHOOL_DESCRIPTION}" backgroundColor="{color}"></TableViewRow>
+	</TableView>
+</Alloy>

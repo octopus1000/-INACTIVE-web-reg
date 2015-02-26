@@ -1,0 +1,27 @@
+
+".container" : {
+	backgroundColor:"white" 
+},
+"TableView":{
+	top:0,
+	hasChild:true
+},
+
+"TableViewRow":{
+	hasChild:true
+},
+
+"#schoolLabel":{
+	//textAlign:"left",
+	//top:"5sp",
+	//left:5,
+	font:{
+		fontSize:"12sp",
+		fontFamily:"Helvetica ",
+		fontWeight:"ultra"
+	}
+}
+
+"TableView":{
+	separatorColor:'transparent' 
+}
