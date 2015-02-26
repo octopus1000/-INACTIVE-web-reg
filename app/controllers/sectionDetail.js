@@ -1,6 +1,6 @@
 var args = arguments[0] || {};
 var section = Alloy.createModel("Section");
-var courseBin = Alloy.Collections.CBin;
+//var courseBin = Alloy.Collections.CBin;
 
 init(args.sec);
 if (section) {
@@ -24,8 +24,15 @@ function showSection(section) {
 }
 
 function addToBin() {
+	
+	//courseBin = Alloy.createCollection("CBin");
 	var pLen = courseBin.length;
-	courseBin.add(section);
+	
+	console.log(courseBin);					
+	courseBin.add({SIS_COURSE_ID:"1111"});
+
+	alert("hahaha???.");
+	
 	var nLen = courseBin.length;
 	if ( nLen == pLen + 1)
 		alert("Successfully added to CourseBin.");

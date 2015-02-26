@@ -1,15 +1,20 @@
 <Alloy>
 	<Collection src="Course"></Collection>
-	
-	<Window class="container" onOpen="showIndicator" layout="vertical">
-		<Label id="deptLabel">(department name)</Label>
-		<Picker onChange="changeTerm">
-			<Row title = "20151"/>
-			<Row title = "20143"/>
-		</Picker>
-		<!--indicator appear when loading course-->
-		<ActivityIndicator id="indicator" message="Loading..."/>
-		<TableView id="courseTable" onClick="showCourseDetail">
-		</TableView>
+
+	<Window id = "mainWin" title="Course List" class="container">		
+		
+		<ActivityIndicator id="indicator" message="Loading..."/>          
+		
+		<TableView id="courseTable" onClick="showCourseDetail" dataTransform = "transColor">
+		<SearchBar platform="ios"/>
+		</TableView>		
+		<TabbedBar id="switchTerm">
+        <Labels>
+          <Label>2014 Fall</Label>
+          <Label>2015 Spring</Label>
+          <Label>2015 Summer</Label>
+        </Labels>
+      </TabbedBar>
+		
 	</Window>
 </Alloy>

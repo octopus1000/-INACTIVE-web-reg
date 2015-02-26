@@ -1,0 +1,12 @@
+<Alloy>
+	<ScrollView class="container" layout="vertical">
+		<Label>Section</Label>
+		<Label id = "secId"></Label>
+		<Label>Type</Label>
+		<Label id = "secType"></Label>
+		<View layout="horizontal">
+			<Button id="btnToBin" onClick="addToBin">Add to Course Bin</Button>
+			<Button id="btnReg">Register</Button>
+		</View>	
+	</ScrollView>
+</Alloy>

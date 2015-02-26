@@ -1,4 +1,22 @@
 
 ".container" : {
-  
+  backgroundColor: 'white'
 },
+
+"#courseTitle": {
+	top: 0,
+	left: 5, 
+	font: {
+        fontSize: 18,
+        fontWeight: 'bold'
+    }
+}
+
+"#courseDescription":{
+	top: 5,
+	left: 10, 
+		font: {
+        fontSize: 12,
+        fontWeight: 'ultra'
+    }
+}

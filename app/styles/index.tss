@@ -1,5 +1,5 @@
 ".container": {
-	backgroundColor:"white"
+	backgroundColor:"red"
 }
 
 "Label": {
@@ -7,3 +7,8 @@
 	height: Ti.UI.SIZE,
 	color: "#000"
 }
+
+"TabGroup":{
+	tabBackgroundColor:"#eee"
+}
+

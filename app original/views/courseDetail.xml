@@ -1,0 +1,8 @@
+<Alloy>
+	<Window id = "courseDetailWindow" class="container" layout="vertical">
+		<Label id="courseTitle">CLASS DESCRIPTION</Label>
+		<Label id="courseDescription">class detail</Label>
+		<!--<ScrollableView id="scrollableView" showPagingControl="true">
+	</ScrollableView>-->
+	</Window>
+</Alloy>

@@ -1,3 +1,7 @@
 "TableViewRow":{
-	hasChild:true
+	hasChild:true,
+}
+
+"TableView":{
+	separatorColor:'transparent' 
 }

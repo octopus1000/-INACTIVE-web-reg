@@ -1,12 +1,12 @@
 exports.definition = {
 	config: {
-
 		adapter: {
-			type: "properties",
+			type: "restapi",
 			collection_name: "CBin",
-			idAttribute:"SECTION_ID"
+			//idAttribute:"SECTION_ID"
 		}
 	},
+	
 	extendModel: function(Model) {
 		_.extend(Model.prototype, {
 			// extended functions and properties go here

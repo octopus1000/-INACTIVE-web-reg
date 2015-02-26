@@ -1,17 +1,18 @@
 ".container" : {
 	backgroundColor:"white"
 },
-"Picker":{
-	top:"0dp",
-	height:"100dp"
+
+"#courseTable":{
+	top:0,
+	bottom: 40
 },
-"#deptLabel":{
-	textAlign:"left",
-	top:"6sp",
-	bottom:"6sp",
-	font:{
-		fontSize:"12sp",
-		fontFamily:"Helvetica",
-		fontWeight:"bold"
-	}
+
+"#switchTerm":{
+	bottom: 0,
+	width: Ti.UI.FILL,
+	height: 30
+}
+
+"TableView":{
+	separatorColor:'transparent' 
 }

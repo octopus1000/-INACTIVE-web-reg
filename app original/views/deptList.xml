@@ -1,0 +1,9 @@
+<Alloy>
+	<Collection src="Dept"></Collection>
+	<Window class="container" onClose="close" layout="vertical">
+		<Label id="schoolLabel">(school name)</Label>
+		<TableView dataCollection="Dept" dataFilter="filter" onClick="showCourseList">
+			<TableViewRow title="{SOC_DEPARTMENT_DESCRIPTION}"></TableViewRow>
+		</TableView>
+	</Window>
+</Alloy>

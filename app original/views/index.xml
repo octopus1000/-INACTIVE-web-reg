@@ -1,0 +1,12 @@
+<Alloy>
+	<TabGroup>
+		<Tab id="tab1" title="Register">
+			<Window class="container">
+				<Require src = "schoolList"/>
+			</Window>
+		</Tab>
+		<Tab id="tab2" title="My Courses">
+			<Require src="courseBinDetail"></Require>
+		</Tab>
+	</TabGroup>
+</Alloy>

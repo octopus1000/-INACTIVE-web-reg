@@ -2,10 +2,34 @@ var args = arguments[0] || {};
 var depts = Alloy.Collections.Dept;
 var school = args.school;
 
+//var schoolTitle = school.get("SOC_SCHOOL_DESCRIPTION");
 
 fetchDepts(school);
-$.schoolLabel.setText(school.get("SOC_SCHOOL_DESCRIPTION"));
 
+//$.schoolLabel.setText(schoolTitle);
+
+
+var btnMenu = Ti.UI.createButton({
+        title: 'Menu'
+   });
+
+btnMenu.addEventListener('click', function (e) {
+       alert('Menu');
+});
+
+
+
+
+
+//$.mainWin.setRightNavButton(btnMenu);
+
+
+var btnBack = Ti.UI.createButton({ 
+   });
+   
+btnBack.addEventListener('click', function(e){
+	    $.mainWin.close();
+}); 
 
 //get departments of clicked school
 function fetchDepts(school){
@@ -30,6 +54,8 @@ function showCourseList(e){
 	//get department model
 	var filteredDepts = filter(depts);
 	var model = filteredDepts[e.index];
+	//$.indicator.hide();
+
 	if(model){
 		var args = {
 			dept:model
@@ -41,4 +67,16 @@ function showCourseList(e){
 
 function close(){
 	$.destroy();
+}
+
+var count = true;
+function transColor(model){
+	var tran = model.toJSON();
+	tran.color = count? "#F7F7F7":"#D7D7D7",
+	count = !count;
+	return tran;
+}
+
+function showIndicator(){
+	 $.indicator.show();
 }

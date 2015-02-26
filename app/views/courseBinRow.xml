@@ -1,5 +1,5 @@
 <Alloy>
-	<TableViewRow>
+	<TableViewRow>	
 		<View id="rowView" class="row" >
 			<Label id="titleLabel" onSwipe="swipeLeft">{SIS_COURSE_ID}</Label>
 			<Button>Register</Button>

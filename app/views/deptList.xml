@@ -1,9 +1,10 @@
 <Alloy>
 	<Collection src="Dept"></Collection>
-	<Window class="container" onClose="close" layout="vertical">
-		<Label id="schoolLabel">(school name)</Label>
-		<TableView dataCollection="Dept" dataFilter="filter" onClick="showCourseList">
-			<TableViewRow title="{SOC_DEPARTMENT_DESCRIPTION}"></TableViewRow>
-		</TableView>
+	<Window id = "mainWin" title ="Departments" class="container" onClose="close" layout="vertical">							
+<!--<ActivityIndicator id="indicator" message="Loading..."/><View backgroundColor = "#C7C7CC" borderColor = "#C7C7CC" height = 15 top = 0><Label id="schoolLabel">(school name)</Label></View>-->				
+		<TableView id = "tableView" headTitle="school of ..."  dataCollection="Dept" dataFilter="filter" onClick="showCourseList" dataTransform = "transColor">		
+			<SearchBar id="search" top= 0 borderColor = "#C7C7CC" height = 15 />					
+		<TableViewRow title="{SOC_DEPARTMENT_DESCRIPTION}" backgroundColor="{color}"></TableViewRow>
+	</TableView>
 	</Window>
 </Alloy>

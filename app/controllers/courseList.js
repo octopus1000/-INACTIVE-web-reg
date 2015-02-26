@@ -10,7 +10,7 @@ var deptcode;
 deptcode = dept.get("SOC_DEPARTMENT_CODE");
 fetchCourse(term,deptcode,$.courseTable);
 fetchTerm();
-$.deptLabel.setText(dept.get("SOC_DEPARTMENT_DESCRIPTION"));
+//$.deptLabel.setText(dept.get("SOC_DEPARTMENT_DESCRIPTION"));
 
 //get an array of active or available terms
 function fetchTerm(){
@@ -55,6 +55,7 @@ function updateTable(table,courses){
 	for(var i= 0; i < courses.length; i++){
 		var row = Titanium.UI.createTableViewRow({
 			title:courses[i].title(),
+			backgroundColor: "{color}", 
 			hasChild:true
 		});
 		data.push(row);
@@ -70,6 +71,7 @@ function changeTerm(e){
 	fetchCourse(e.selectedValue[0],deptcode,$.courseTable);
 }
 
+
 //fired when click course row
 function showCourseDetail(e){
 	var model=newCourse.at(e.index);
@@ -82,7 +84,20 @@ function showCourseDetail(e){
 	}
 }
 
+
+
 function showIndicator(){
 	 $.indicator.show();
 }
 
+
+var count = true;
+function transColor(model){
+	var tran = model.toJSON();
+	tran.color = count? "#F7F7F7":"#D7D7D7",
+	count = !count;
+	console.log("aaaa");
+	return tran;
+}
+
+$.switchTerm.index = 1;
