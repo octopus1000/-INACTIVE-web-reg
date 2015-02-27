@@ -24,5 +24,13 @@ function showSection(e){
 	var args = {
 			section: courseBin.at(e.index)
 		};
-	Titanium.UI.currentTab.open(Alloy.createController("sectionDetail2",args).getView(),{animated : true});
+		if(e.row.toggle){
+			e.row.height = "0dp";
+			e.row.toggle=false;
+		}
+		else{
+			e.row.toggle=true;
+			e.row.height="300dp";
+		}
+	//Alloy.Globals.tab2.open(Alloy.createController("sectionDetail2",args).getView(),{animated : true});
 }
