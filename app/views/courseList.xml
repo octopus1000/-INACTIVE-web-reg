@@ -3,16 +3,15 @@
 
 	<Window id = "mainWin" title="Course List" class="container">		
 		
-		<ActivityIndicator id="indicator" message="Loading..."/>          
-		
+		<ActivityIndicator id="indicator" message="Loading..."/> 
 		<TableView id="courseTable" onClick="showCourseDetail" dataTransform = "transColor">
 		<SearchBar platform="ios"/>
 		</TableView>		
-		<TabbedBar id="switchTerm">
+		<TabbedBar id="switchTerm"  onClick="changeTerm">
         <Labels>
-          <Label>2014 Fall</Label>
-          <Label>2015 Spring</Label>
-          <Label>2015 Summer</Label>
+          <Label id="label1" term = "20143">2014 Fall</Label>
+          <Label id="label2" term = "20151" >2015 Spring</Label>
+          <Label id="label3" term = "20152">2015 Summer</Label>
         </Labels>
       </TabbedBar>
 		

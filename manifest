@@ -1,8 +1,8 @@
-#appname: webReg
-#publisher: Administrator
-#url: http://
-#image: appicon.png
-#appid: com.zhang.webReg
-#desc: undefined
-#type: mobile
-#guid: c91e3c30-8063-4e54-bd0c-a3c7ebe3cf11
+#appname:webReg
+#publisher:Administrator
+#url:http://
+#image:appicon.png
+#appid:com.zhang.webReg
+#desc:undefined
+#type:ipad
+#guid:c91e3c30-8063-4e54-bd0c-a3c7ebe3cf11

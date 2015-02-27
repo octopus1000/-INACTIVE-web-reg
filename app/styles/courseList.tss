@@ -15,4 +15,8 @@
 
 "TableView":{
 	separatorColor:'transparent' 
+},
+"#indicator":{
+	top :'50%',
+	zIndex:99
 }

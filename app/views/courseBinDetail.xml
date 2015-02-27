@@ -1,9 +1,10 @@
 <Alloy>
-	<Collection src="CBin"></Collection>
-
-					<Label>aaaa</Label>
-		<TableView id="courseBinTable" dataCollection="CBin">
-			<Require src="courseBinRow">
-			</Require>
-		</TableView>
+	<Collection src="cbin"></Collection>
+	<TableView id="courseBinTable" dataCollection="cbin" onSwipe="swipe" onClick="showSection">
+		<TableViewRow layout="horizontal">
+			<Label>{SIS_COURSE_ID}</Label>
+			<Button>Register</Button>
+			<Button onClick="remove" section="{SECTION_ID}">Remove</Button>
+		</TableViewRow>
+	</TableView>
 </Alloy>

@@ -39,6 +39,7 @@ function setTerm(text){
 //get courses list under a department and certain term
 function fetchCourse(term, deptcode,table) {
 	table.setData([]);//clear datas in table
+	$.indicator.show();
 	newCourse = Alloy.createCollection("Course");
 	newCourse.setDir(term + "/" + deptcode);
 	newCourse.fetch({
@@ -55,7 +56,7 @@ function updateTable(table,courses){
 	for(var i= 0; i < courses.length; i++){
 		var row = Titanium.UI.createTableViewRow({
 			title:courses[i].title(),
-			backgroundColor: "{color}", 
+			backgroundColor: i%2 == 0?"#F7F7F7":"#D7D7D7", 
 			hasChild:true
 		});
 		data.push(row);
@@ -67,8 +68,13 @@ function updateTable(table,courses){
 
 //fired when user change term using <picker>
 function changeTerm(e){
-	console.log(e.selectedValue[0]);
-	fetchCourse(e.selectedValue[0],deptcode,$.courseTable);
+	if(e.index == 0)
+		term = "20143";
+	if(e.index == 1)
+		term = "20151";
+	if(e.index == 2)
+		term = "20152";
+	fetchCourse(term,deptcode,$.courseTable);
 }
 
 
@@ -91,13 +97,5 @@ function showIndicator(){
 }
 
 
-var count = true;
-function transColor(model){
-	var tran = model.toJSON();
-	tran.color = count? "#F7F7F7":"#D7D7D7",
-	count = !count;
-	console.log("aaaa");
-	return tran;
-}
 
 $.switchTerm.index = 1;

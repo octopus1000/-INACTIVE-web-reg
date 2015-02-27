@@ -9,7 +9,7 @@ fetchDepts(school);
 //$.schoolLabel.setText(schoolTitle);
 
 
-var btnMenu = Ti.UI.createButton({
+/*var btnMenu = Ti.UI.createButton({
         title: 'Menu'
    });
 
@@ -17,11 +17,7 @@ btnMenu.addEventListener('click', function (e) {
        alert('Menu');
 });
 
-
-
-
-
-//$.mainWin.setRightNavButton(btnMenu);
+$.mainWin.setRightNavButton(btnMenu);
 
 
 var btnBack = Ti.UI.createButton({ 
@@ -30,6 +26,7 @@ var btnBack = Ti.UI.createButton({
 btnBack.addEventListener('click', function(e){
 	    $.mainWin.close();
 }); 
+*/
 
 //get departments of clicked school
 function fetchDepts(school){

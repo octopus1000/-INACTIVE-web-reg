@@ -11,5 +11,4 @@
 // Alloy.Globals.someGlobalFunction = function(){};
 
 var Backbone = require("alloy/backbone");
-var courseBin = Alloy.Collections.CBin;
-courseBin = Alloy.createCollection("CBin");
+Alloy.Collections.cbin = Alloy.createCollection("cbin");
