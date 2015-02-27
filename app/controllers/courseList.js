@@ -57,6 +57,7 @@ function updateTable(table,courses){
 		var row = Titanium.UI.createTableViewRow({
 			title:courses[i].title(),
 			backgroundColor: i%2 == 0?"#F7F7F7":"#D7D7D7", 
+			selectedBackgroundColor:"#FF3B30",
 			hasChild:true
 		});
 		data.push(row);
