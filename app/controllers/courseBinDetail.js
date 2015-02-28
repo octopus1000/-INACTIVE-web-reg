@@ -150,17 +150,25 @@ function printEventDetails(eventID) {
 }
 function performCalendarWriteFunctions(section){
     var defCalendar = Ti.Calendar.defaultCalendar;
-          
+    var days = getDayInt(section.get("DAY"));   
+    
+     if(!section.get("BEGIN_TIME") || !section.get("END_TIME") || !days){
+    	alert("invalid time.");
+    	return;
+    }
+    
     var today = new Date();
+    var daycurrent = today.getDay();//get current day of week
+    var daytoset = days[0] - 1;//get the first day
+    
+    today.setDate(today.getDate() + daytoset - daycurrent);
+    
     today = today.toString();
     today = today.substring(0,16);  
     
     var date1 = new Date(today + section.get("BEGIN_TIME")),
         date2 = new Date(today + section.get("END_TIME"));
-    
-    if(!section.get("BEGIN_TIME") || !section.get("END_TIME")){
-    	alert("invalid time.");
-    }
+
 
     Ti.API.info('Date1 : '+ date1 + 'Date2 : '+ date2);
     
@@ -188,10 +196,16 @@ function performCalendarWriteFunctions(section){
     var allAlerts = new Array(alert1,alert2);
     event1.alerts = allAlerts;*/
    
+   
+   var recur = [];
+   _.each(days,function(day){
+   	recur.push({dayOfWeek: day + 1});
+   });
+   
     var newRule = event1.createRecurenceRule({
                         frequency: Ti.Calendar.RECURRENCEFREQUENCY_WEEKLY,
                         interval: 1,
-                        daysOfTheWeek: [{dayOfWeek:2}],
+                        daysOfTheWeek: recur,
                         end: {occurrenceCount:10}
                 });
     Ti.API.info('newRule : '+ newRule);

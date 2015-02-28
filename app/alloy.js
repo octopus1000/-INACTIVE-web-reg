@@ -97,3 +97,33 @@ function updateTable(theDay, table){
 		conf(table);
 
 }
+
+
+function getDayInt(tempArr){
+	var len;
+	var tempArrInt = [];
+	
+	if (tempArr == null){
+		len = 0;
+	}	
+	else{
+		len = tempArr.length;
+	}
+	
+	var i;
+	
+	for (i = 0; i<len; i++){
+	if (tempArr[i] == "M")
+		tempArrInt.push(1);
+	else if  (tempArr[i] == "T")
+		tempArrInt.push(2);
+	else if  (tempArr[i] == "W")
+		tempArrInt.push(3);
+	else if  (tempArr[i] == "H")
+		tempArrInt.push(4);
+	else if  (tempArr[i] == "F")
+		tempArrInt.push(5);		
+	}	
+	console.log(tempArrInt);
+	return tempArrInt;	
+}

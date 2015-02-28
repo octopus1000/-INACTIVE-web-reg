@@ -3,7 +3,8 @@ var section = Alloy.createModel("Section");
 
 var calendar = Alloy.Collections.cbin;
 
-var day;
+var day = [];
+//var dayInt = [];
 var courseName;
 
 var startTime;
@@ -63,6 +64,8 @@ function showSection(section) {
 	}
 
 	showDay(section);
+	getDayInt(day);
+
 	
 	if(section.get("LOCATION")){
 		$.secRoom.setTitle("Room: " + section.get("LOCATION"));
@@ -91,11 +94,12 @@ function showDay(section){
 	}
 	
 	var i;
-	var output = "|";
+	var output = " ";
 	for (i = 0; i<len; i++){
-			output = output + day[i] + "|";
+			output = output + day[i];
 	}			
 	$.secDay.setTitle("Day:" + output);
+	
 }
 
 function addToBin() {
@@ -120,7 +124,10 @@ function addToBin() {
 }
 
 
+
 function addToCal(section) {
+	if(!startTime || !endTime)
+	return;
 	var time0 = startTime.split(":"); 
 	var timef = endTime.split(":");	
 	var index = 0;
@@ -138,7 +145,7 @@ function addToCal(section) {
 	
 	
 	
-	var len = day.length;
+	var len = day ? day.length : 0;
 	var i;
 	var output = "|";
 	for (i = 0; i<len; i++){
