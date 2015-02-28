@@ -39,7 +39,6 @@
 	width:'90%',
 	borderRadius:'10dp',
 	opacity:'0.8',
-	zIndex:'99',
 	//backgroundColor:'#aaa',
 	font:{
 		fontSize:'12sp'

@@ -40,7 +40,7 @@ function showSection(sections) {
 	console.log(sections.length);
 	_.each(sections, function(section,i) {
 		pickerData.push({
-			title:section.SECTION,
+			title:section.SECTION + "\t" + section.BEGIN_TIME + "-" + section.END_TIME + "\t" + section.TYPE,
 			height:'30dp',
 			font:{
 				fontSize:'12sp'
