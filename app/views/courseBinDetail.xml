@@ -10,6 +10,7 @@
 			<View layout="vertical">
 				<View class="labelView"><Label>{secId}</Label></View>
 				<View class="labelView"><Label>{secType}</Label></View>
+				<View class="labelView"><Label>{secTime}</Label></View>
 				<View class="labelView"><Label>{secUnit}</Label></View>
 				<View class="labelView"><Label>{secDay}</Label></View>
 				<View class="labelView"><Label>{secRoom}</Label></View>

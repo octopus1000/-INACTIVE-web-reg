@@ -52,7 +52,10 @@ function transform(model){
 	tran.secId =   'Section:' + (model.get("SECTION") ? model.get("SECTION") : "N/A");
 	tran.secType = 'Type:' + (model.get('TYPE') ? model.get("TYPE") : "N/A");
 	tran.secUnit = 'Units:' + (model.get('REGISTERED') ? model.get("REGISTERED") : "N/A");
-	tran.secTime = 'Time:' + (model.get('BEGIN_TIME') ? model.get("BEGIN_TIME") + "-" + model.get("END_TIME") : "N/A");
+	if(model.get("BEGIN_TIME"))
+		tran.secTime = 'Time:' + model.get("BEGIN_TIME") + "-" + model.get("END_TIME");
+	else
+		tran.secTime = 'Time:N/A';
 	tran.secDay =  'Day:' + (model.get('DAY') ? model.get("DAY") : "N/A");
 	tran.secRoom = 'Room:' + (model.get('LOCATION') ? model.get("LOCATION") : "N/A");
 	tran.secProf = 'Instructor:' + (model.get('INSTRUCTOR') ? model.get("INSTRUCTOR") : "N/A");
@@ -154,7 +157,10 @@ function performCalendarWriteFunctions(section){
     
     var date1 = new Date(today + section.get("BEGIN_TIME")),
         date2 = new Date(today + section.get("END_TIME"));
-        
+    
+    if(!section.get("BEGIN_TIME") || !section.get("END_TIME")){
+    	alert("invalid time.");
+    }
 
     Ti.API.info('Date1 : '+ date1 + 'Date2 : '+ date2);
     
@@ -181,6 +187,7 @@ function performCalendarWriteFunctions(section){
     })
     var allAlerts = new Array(alert1,alert2);
     event1.alerts = allAlerts;*/
+   
     var newRule = event1.createRecurenceRule({
                         frequency: Ti.Calendar.RECURRENCEFREQUENCY_WEEKLY,
                         interval: 1,
