@@ -23,7 +23,7 @@ function showDeptList(e){
 var count = true;
 function transColor(model){
 	var tran = model.toJSON();
-	tran.color = count? "#FFF":"#D7D7D7";
+	tran.color = count? "#F7F7F7":"#D7D7D7",
 	count = !count;
 	return tran;
 }

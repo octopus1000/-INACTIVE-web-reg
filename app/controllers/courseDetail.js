@@ -12,7 +12,8 @@ function showCourse(course) {
 	}
 	//set <Label> text
 	$.courseTitle.setText(course.title());	
-	$.courseDescription.setText(course.get("DESCRIPTION"));
+	$.courseDescription.setText(course.get("DESCRIPTION"));	
+	
 	
 	//fetch course to get sections
 	course.fetch({
@@ -27,7 +28,10 @@ function showCourse(course) {
 function showSection(sections) {
 	//need to create a new view and add it to <Window>, else it won't refresh
 	var scrollableView = Titanium.UI.createScrollableView();
+//	scrollableView.setHeight(200);
+//	scrollableView.setBottom(0);
 
+	//scrollableView.setBackgroundColor("yellow");
 	//create views using sections array
 	_.each(sections, function(section) {
 		var args = {
