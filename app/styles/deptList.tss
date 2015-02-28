@@ -8,8 +8,7 @@
 },
 
 "TableViewRow":{
-	hasChild:true,
-	selectedBackgroundColor:"#FF3B30"
+	hasChild:true
 },
 
 "#schoolLabel":{
@@ -25,10 +24,4 @@
 
 "TableView":{
 	separatorColor:'transparent' 
-}
-
-"Window":{
-	titleAttributes:{
-		color: "#FFF"
-	}
 }

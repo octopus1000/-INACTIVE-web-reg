@@ -1,0 +1,5 @@
+"#switchDate":{
+	top : 0,
+	width: Ti.UI.FILL,
+	height: 30
+}

@@ -1,8 +1,8 @@
 "TableViewRow":{
 	hasChild:true,
-	selectedBackgroundColor:"#FF3B30"
+	selectedBackgroundColor:"#FFF"
 }
 
 "TableView":{
-	separatorColor:'transparent'
+	separatorColor:'transparent' 
 }

@@ -1,10 +1,66 @@
 
-".container" : {
-	width: "auto",
-	height: "auto" 
-},
+"ScrollView":{
+		backgroundColor: "white",
+		height: "90%",
+		contentHeight : "90%"
+
+}
+
+"#content":{
+	borderColor:"FF3B30",
+	borderWidth:"2",
+
+	top: "10%",
+	
+	height:"180",
+	width: '65%',
+	//bottom: "10",
+	textAlign:"left"
+
+	
+}
+
+
+
+"#button":{
+		width: '65%',
+		bottom: "10"	
+}
+
+"#btnToBin":{
+	backgroundColor: "yellow",
+	height: 35,
+	top:3,
+	left:'10%',
+	width: '35%',
+		titleAttributes:{
+		color: "#FFF"
+	}
+}
+
+"#btnReg":{
+	backgroundColor: "yellow",
+	height: 35,
+	top:3,
+	left:'10%',
+	width: '35%',
+	
+	titleAttributes:{
+		color: "#FFF"
+	}
+}
 
 "Label":{
+	top: 5,
+	left: 5,
+	textAlign:"left",	
+
 	width:"auto",
-	height:"auto"
+
+	height:"20",
+	    font: {
+        fontSize:"16dp",
+     //   fontWeight:'bold'
+    },
+	
 }
