@@ -13,8 +13,8 @@
 		</Tab>
 		
 		<Tab id="tab3" title="Calendar" icon="calendar.png">
-			<Window class="container" title="Calendar">
-				<Require src="calendar"></Require>
+			<Window id = "calWin" class="container" title="Calendar">
+			<Require src="calendar"></Require>
 			</Window>
 		</Tab>
 	</TabGroup>

@@ -1,11 +1,17 @@
 <Alloy>
-	<TabbedBar id="switchDate">
+<View id = "dayCal">
+	<TableView id="table"></TableView>
+</View>
+<View id = "swither">
+	<TabbedBar id="switchDay" onClick="changeDay">
         <Labels>
-          <Label id="label1" term = "20143">Mon</Label>
-          <Label id="label2" term = "20151" >Tue</Label>
-          <Label id="label3" term = "20152">Wed</Label>
-          <Label id="label4" term = "20152">Thu</Label>
-          <Label id="label5" term = "20152">Fri</Label>
+          <Label id="label1" day = "1">Mon</Label>
+          <Label id="label2" day = "2">Tue</Label>
+          <Label id="label3" day = "3">Wed</Label>
+          <Label id="label3" day = "4">Thu</Label>
+          <Label id="label3" day = "5">Fri</Label>
         </Labels>
       </TabbedBar>
+</View>	   
+	
 </Alloy>

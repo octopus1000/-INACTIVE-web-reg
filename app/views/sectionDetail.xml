@@ -12,8 +12,8 @@
 		
 		<View id = "button" layout="horizontal">
 			<View class="btnWrap"><Button id ="btnToBin" onClick="addToBin"></Button></View>
-			<View class="btnWrap"><Button id ="btnReg"></Button></View>
+			<View class="btnWrap"><Button id ="btnReg" onClick="addToCal"></Button></View>
 		</View>	
-
+		
 	</ScrollView>
 </Alloy>

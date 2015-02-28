@@ -2,7 +2,7 @@
 	<Collection src="Course"></Collection>
 
 	<Window id = "mainWin" title="Course" class="container">		
-		
+	
 		<ActivityIndicator id="indicator" message="Loading..."/> 
 		<TableView id="courseTable" onClick="showCourseDetail" dataTransform = "transColor">
 		<SearchBar platform="ios"/>
