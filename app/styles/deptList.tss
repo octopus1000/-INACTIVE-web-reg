@@ -8,7 +8,9 @@
 },
 
 "TableViewRow":{
-	hasChild:true
+	hasChild:true,
+	selectedBackgroundColor:"#FF3B30",
+	color:"#4A4A4A"
 },
 
 "#schoolLabel":{
@@ -19,6 +21,12 @@
 		fontSize:"12sp",
 		fontFamily:"Helvetica ",
 		fontWeight:"ultra"
+	}
+}
+
+"Window":{
+	titleAttributes:{
+		color: "#FFF"
 	}
 }
 

@@ -20,54 +20,54 @@ function init(secObj) {
 //include:SECTION,SESSION,TYPE,BEGIN_TIME,END_TIME,DAY,LOCATION,REGISTERED,INSTRUCTOR
 function showSection(section) {
 	if(section.get("SECTION")){
-		$.secId.setText("Section ID: " + section.get("SECTION"));
+		$.secId.setTitle("Section ID: " + section.get("SECTION"));
 	}
 	else{
-		$.secId.setText("Section ID: N/A");
+		$.secId.setTitle("Section ID: N/A");
 	}
 	
 	if(section.get("TYPE")){
-		$.secType.setText("Type: " + section.get("TYPE"));
+		$.secType.setTitle("Type: " + section.get("TYPE"));
 	}
 	else{
-		$.secId.setText("Type: N/A");
+		$.secId.setTitle("Type: N/A");
 	}
 	
 	if (section.get("REGISTERED")){
-		$.secUnit.setText("Units: " + section.get("REGISTERED"));
+		$.secUnit.setTitle("Units: " + section.get("REGISTERED"));
 	}
 	else{
-		$.secUnit.setText("Units: N/A");
+		$.secUnit.setTitle("Units: N/A");
 	}
 	if(section.get("BEGIN_TIME") && section.get("END_TIME")){
-		$.secTime.setText("Time: " + section.get("BEGIN_TIME") + "-" + section.get("END_TIME"));
+		$.secTime.setTitle("Time: " + section.get("BEGIN_TIME") + "-" + section.get("END_TIME"));
 	}
 	
 	else{
-//				$.secTime.setText("Time: " + section.get("BEGIN_TIME") + "-" + section.get("END_TIME"));
+//				$.secTime.setTitle("Time: " + section.get("BEGIN_TIME") + "-" + section.get("END_TIME"));
 
-			$.secTime.setText("Time: N/A");
+			$.secTime.setTitle("Time: N/A");
 	}
 	//if(section.get("DAY")){
-	//	$.secDay.setText("Day: " + section.get("DAY"));
+	//	$.secDay.setTitle("Day: " + section.get("DAY"));
 	//}
 	//else{
-	//			$.secDay.setText("Day: N/A");
+	//			$.secDay.setTitle("Day: N/A");
 	//}
 	
 	day = showDay(section);
 	
 	if(section.get("LOCATION")){
-		$.secRoom.setText("Room: " + section.get("LOCATION"));
+		$.secRoom.setTitle("Room: " + section.get("LOCATION"));
 	}
 	else{
-		$.secRoom.setText("Room: N/A");
+		$.secRoom.setTitle("Room: N/A");
 	}
 	if(section.get("INSTRUCTOR")){
-		$.secProf.setText("Instructor: " + section.get("INSTRUCTOR"));
+		$.secProf.setTitle("Instructor: " + section.get("INSTRUCTOR"));
 	}
 	else{
-		$.secProf.setText("Instructor: N/A");
+		$.secProf.setTitle("Instructor: N/A");
 	}
 }
 
@@ -75,31 +75,31 @@ function showDay(section){
 	var day = section.get("DAY");
 	
 	if (day == "M"){
-		$.secDay.setText("Day: M");
+		$.secDay.setTitle("Day: M");
 	}
 	else if (day == "T"){
-		$.secDay.setText("Day: T");
+		$.secDay.setTitle("Day: T");
 	}
 	else if (day == "W"){
-		$.secDay.setText("Day: W");
+		$.secDay.setTitle("Day: W");
 	}
 	else if (day == "H"){
-		$.secDay.setText("Day: Th");
+		$.secDay.setTitle("Day: TH");
 	}
 	else if (day == "F"){
-		$.secDay.setText("Day: F");
+		$.secDay.setTitle("Day: F");
 	}
 	else if (day == "TH"){
-		$.secDay.setText("Day: T/Th");
+		$.secDay.setTitle("Day: T/Th");
 	}
 	else if (day == "MW"){
-		$.secDay.setText("Day: M/W");
+		$.secDay.setTitle("Day: M/W");
 	}
 	else if (day == "MWF"){
-		$.secDay.setText("Day: M/W/F");
+		$.secDay.setTitle("Day: M/W/F");
 	}
 	else{
-		$.secDay.setText("Day<" + day);
+		$.secDay.setTitle("Day:" + day);
 	}
 	return day;
 }

@@ -27,7 +27,11 @@ function showCourse(course) {
 //show add section detail to scrollable view
 function showSection(sections) {
 	//need to create a new view and add it to <Window>, else it won't refresh
-	var scrollableView = Titanium.UI.createScrollableView();
+	var scrollableView = Titanium.UI.createScrollableView({
+		showPagingControl:true,
+		backgroundColor:"transparent",
+		pagingControlColor: "#D7D7D7"
+	});
 //	scrollableView.setHeight(200);
 //	scrollableView.setBottom(0);
 

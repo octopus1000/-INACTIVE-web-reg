@@ -9,9 +9,9 @@
 		</TableView>		
 		<TabbedBar id="switchTerm"  onClick="changeTerm">
         <Labels>
-          <Label id="label1" term = "20143">2014 Fall</Label>
-          <Label id="label2" term = "20151" >2015 Spring</Label>
-          <Label id="label3" term = "20152">2015 Summer</Label>
+          <Label id="label1" term = "20143" color="FF3B30">2014 Fall</Label>
+          <Label id="label2" term = "20151" color="FF3B30">2015 Spring</Label>
+          <Label id="label3" term = "20152" color="FF3B30">2015 Summer</Label>
         </Labels>
       </TabbedBar>
 		

@@ -1,6 +1,6 @@
 
 ".container" : {
-  width:"100%"
+  width:"100%",
 },
 
 ".wrap":{
@@ -12,9 +12,48 @@
 },
 
 "Label":{
+	left:'20dp',
+	width:'100%',
+	height: '30dp',
+	textAlign:'left'
+}
+
+".labelView":{
+	height:'30dp',
+	backgroundGradient:{
+		colors:[{color:'#fff'},{color:'#F7F7F7'}]
+	},
+}
+
+"TableView":{
+	height:'auto'
+},
+
+".rowLabel":{
+	borderWidth:0,
+	left:'20dp',
 	width:"300dp",
-	height:"24sp"
+	height:"50dp"
+},
+
+"TableViewRow":{
+	height:'50dp',
+	clipMode:Titanium.UI.iOS.CLIP_MODE_ENABLED,
+	selectedBackgroundColor:'white',
+	borderRadius: 0
 },
 
 "Button":{
+	left:'20dp',
+	width:'30dp',
+	height:'30dp',
+	bubbleParent:false
+},
+
+".plus":{
+	backgroundImage:'plus.png'
+},
+
+".cross":{
+	backgroundImage:'cross.png'
 }

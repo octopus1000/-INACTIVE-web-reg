@@ -1,22 +1,29 @@
-
-".container" : {
-  backgroundColor: 'white'
-},
-
-"#courseTitle": {
-	top: 0,
-	left: 5, 
-	font: {
-        fontSize: 18,
-        fontWeight: 'bold'
-    }
+"Window":{
+	backgroundColor:"white",
+	//backgroundImage:"bgg.jpg"
+	backgroundGradient:{
+		colors:[{color:'#F7F7F7'},{color:'#D7D7D7'}]
+	}
+	
 }
 
+
+
+"#courseTitle": {
+	top: "10dp", 
+	width:"90%",
+	textAlign:"center",
+	font: {
+        fontSize: 15,
+        fontWeight: 'bold'
+   }
+},
+
 "#courseDescription":{
-	top: 5,
-	left: 10, 
+	top: "5dp",
+	width:"90%",
 		font: {
         fontSize: 12,
         fontWeight: 'ultra'
-    }
+   }
 }

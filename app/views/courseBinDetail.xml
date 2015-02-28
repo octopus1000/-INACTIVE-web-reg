@@ -1,11 +1,19 @@
 <Alloy>
 	<Collection src="cbin"></Collection>
-	<TableView id="courseBinTable" dataCollection="cbin" onSwipe="swipe" onClick="showSection">
-		<TableViewRow layout="horizontal">
+	<TableView id="courseBinTable" dataCollection="cbin" onSwipe="swipe" onClick="showSection" dataTransform="transform">
+		<TableViewRow layout="vertical">
 			<View class="wrap" layout="horizontal">
-			<Label>{SIS_COURSE_ID}</Label>
-			<Button>Register</Button>
-			<Button onClick="remove" section="{SECTION_ID}">Remove</Button>
+			<Label class="rowLabel">{SIS_COURSE_ID}</Label>
+			<Button class="plus"></Button>
+			<Button class="cross" onClick="remove" section="{SECTION_ID}"></Button>
+			</View>
+			<View layout="vertical">
+				<View class="labelView"><Label>{secId}</Label></View>
+				<View class="labelView"><Label>{secType}</Label></View>
+				<View class="labelView"><Label>{secUnit}</Label></View>
+				<View class="labelView"><Label>{secDay}</Label></View>
+				<View class="labelView"><Label>{secRoom}</Label></View>
+				<View class="labelView"><Label>{secProf}</Label></View>
 			</View>
 		</TableViewRow>
 	</TableView>

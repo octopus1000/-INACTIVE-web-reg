@@ -10,7 +10,15 @@
 "#switchTerm":{
 	bottom: 0,
 	width: Ti.UI.FILL,
-	height: 30
+	height: 30,
+	borderColor:"FF3B30",
+	tintColor:"FF3B30"
+}
+
+"Window":{
+	titleAttributes:{
+		color: "#FFF"
+	}
 }
 
 "TableView":{

@@ -17,6 +17,7 @@
 "TabGroup":{
 	barColor:"#FF3B30",
 	navTintColor: "#white",
-	tabsBackgroundColor: "#white",
+	tabsBackgroundColor: "#2B2B2B",
+	activeTabIconTint: "#FF3B30"
 }
 

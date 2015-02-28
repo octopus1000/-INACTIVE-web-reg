@@ -1,8 +1,0 @@
-<Alloy>
-	<Window class="container" layout="vertical">
-		<Label>Section</Label>
-		<Label id = "secId"></Label>
-		<Label>Type</Label>
-		<Label id = "secType"></Label>
-	</Window>
-</Alloy>
