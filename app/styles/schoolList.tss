@@ -1,6 +1,7 @@
 "TableViewRow":{
 	hasChild:true,
-	selectedBackgroundColor:"#FFF"
+	selectedBackgroundColor:"#FF3B30",
+	color:"#4A4A4A"
 }
 
 "TableView":{

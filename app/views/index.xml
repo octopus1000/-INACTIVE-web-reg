@@ -1,20 +1,20 @@
 <Alloy>
 	<TabGroup>
-		<Tab id="tab1" title="Register" icon="KS_nav_ui.png">
-			<Window id="mainWin" class="container" title="Schools">
+		<Tab id="tab1" title="Register" icon="registration.png">
+			<Window id="mainWin" class="container" title="School">
 				<Require src = "schoolList"/>
 			</Window>
 		</Tab>
 		
-		<Tab id="tab2" title="My Courses" icon="KS_nav_views.png">
-			<Window class="container" title="My Courses">
+		<Tab id="tab2" title="My Courses" icon="course.png">
+			<Window class="container" title="Courses">
 				<Require src="courseBinDetail"></Require>
 			</Window>
 		</Tab>
 		
-		<Tab id="tab3" title="Calendar" icon="KS_nav_views.png">
-			<Window class="container" title="Calendar">
-				<Require src="calendar"></Require>
+		<Tab id="tab3" title="Calendar" icon="calendar.png">
+			<Window id = "calWin" class="container" title="Calendar">
+			<Require src="calendar"></Require>
 			</Window>
 		</Tab>
 	</TabGroup>

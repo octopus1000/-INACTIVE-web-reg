@@ -1,17 +1,17 @@
 <Alloy>
 	<Collection src="Course"></Collection>
 
-	<Window id = "mainWin" title="Course List" class="container">		
-		
+	<Window id = "mainWin" title="Course" class="container">		
+	
 		<ActivityIndicator id="indicator" message="Loading..."/> 
 		<TableView id="courseTable" onClick="showCourseDetail" dataTransform = "transColor">
 		<SearchBar platform="ios"/>
 		</TableView>		
 		<TabbedBar id="switchTerm"  onClick="changeTerm">
         <Labels>
-          <Label id="label1" term = "20143">2014 Fall</Label>
-          <Label id="label2" term = "20151" >2015 Spring</Label>
-          <Label id="label3" term = "20152">2015 Summer</Label>
+          <Label id="label1" term = "20143" color="FF3B30">2014 Fall</Label>
+          <Label id="label2" term = "20151" color="FF3B30">2015 Spring</Label>
+          <Label id="label3" term = "20152" color="FF3B30">2015 Summer</Label>
         </Labels>
       </TabbedBar>
 		

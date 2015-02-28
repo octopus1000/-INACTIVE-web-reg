@@ -1,7 +1,16 @@
 var args = arguments[0] || {};
 var section = Alloy.createModel("Section");
-var courseBin = Alloy.Collections.cbin;
-var day;
+
+var calendar = Alloy.Collections.cbin;
+
+var day = [];
+//var dayInt = [];
+var courseName;
+
+var startTime;
+var endTime;
+
+
 init(args.sec);
 if (section) {
 	showSection(section);
@@ -19,111 +28,289 @@ function init(secObj) {
 //write section data into view
 //include:SECTION,SESSION,TYPE,BEGIN_TIME,END_TIME,DAY,LOCATION,REGISTERED,INSTRUCTOR
 function showSection(section) {
+
+	courseName = section.get("SIS_COURSE_ID");
+
 	if(section.get("SECTION")){
-		$.secId.setText("Section ID: " + section.get("SECTION"));
+		$.secId.setTitle("Section ID: " + section.get("SECTION"));
 	}
 	else{
-		$.secId.setText("Section ID: N/A");
+		$.secId.setTitle("Section ID: N/A");
 	}
 	
 	if(section.get("TYPE")){
-		$.secType.setText("Type: " + section.get("TYPE"));
+		$.secType.setTitle("Type: " + section.get("TYPE"));
 	}
 	else{
-		$.secId.setText("Type: N/A");
+		$.secType.setTitle("Type: N/A");
 	}
 	
 	if (section.get("REGISTERED")){
-		$.secUnit.setText("Units: " + section.get("REGISTERED"));
+		$.secUnit.setTitle("Units: " + section.get("REGISTERED"));
 	}
 	else{
-		$.secUnit.setText("Units: N/A");
+		$.secUnit.setTitle("Units: N/A");
 	}
+	
 	if(section.get("BEGIN_TIME") && section.get("END_TIME")){
-		$.secTime.setText("Time: " + section.get("BEGIN_TIME") + "-" + section.get("END_TIME"));
+		startTime = section.get("BEGIN_TIME");
+		endTime = section.get("END_TIME");;
+		//courseTime = section.get("BEGIN_TIME") + "-" + section.get("END_TIME");	
+		$.secTime.setTitle("Time: " + section.get("BEGIN_TIME") + "-" + section.get("END_TIME"));
 	}
 	
-	else{
-//				$.secTime.setText("Time: " + section.get("BEGIN_TIME") + "-" + section.get("END_TIME"));
+	else{	
+		$.secTime.setTitle("Time: N/A");
+	}
 
-			$.secTime.setText("Time: N/A");
-	}
-	//if(section.get("DAY")){
-	//	$.secDay.setText("Day: " + section.get("DAY"));
-	//}
-	//else{
-	//			$.secDay.setText("Day: N/A");
-	//}
-	
-	day = showDay(section);
+	showDay(section);
+	getDayInt(day);
+
 	
 	if(section.get("LOCATION")){
-		$.secRoom.setText("Room: " + section.get("LOCATION"));
+		$.secRoom.setTitle("Room: " + section.get("LOCATION"));
 	}
 	else{
-		$.secRoom.setText("Room: N/A");
+		$.secRoom.setTitle("Room: N/A");
 	}
+	
 	if(section.get("INSTRUCTOR")){
-		$.secProf.setText("Instructor: " + section.get("INSTRUCTOR"));
+		$.secProf.setTitle("Instructor: " + section.get("INSTRUCTOR"));
 	}
 	else{
-		$.secProf.setText("Instructor: N/A");
+		$.secProf.setTitle("Instructor: N/A");
 	}
 }
 
 function showDay(section){
-	var day = section.get("DAY");
+	day = section.get("DAY");
+	var len;
 	
-	if (day == "M"){
-		$.secDay.setText("Day: M");
-	}
-	else if (day == "T"){
-		$.secDay.setText("Day: T");
-	}
-	else if (day == "W"){
-		$.secDay.setText("Day: W");
-	}
-	else if (day == "H"){
-		$.secDay.setText("Day: Th");
-	}
-	else if (day == "F"){
-		$.secDay.setText("Day: F");
-	}
-	else if (day == "TH"){
-		$.secDay.setText("Day: T/Th");
-	}
-	else if (day == "MW"){
-		$.secDay.setText("Day: M/W");
-	}
-	else if (day == "MWF"){
-		$.secDay.setText("Day: M/W/F");
-	}
+	if (day == null){
+		len = 0;
+	}	
 	else{
-		$.secDay.setText("Day<" + day);
+		len = day.length;
 	}
-	return day;
+	
+	var i;
+	var output = " ";
+	for (i = 0; i<len; i++){
+			output = output + day[i];
+	}			
+	$.secDay.setTitle("Day:" + output);
+	
 }
 
 function addToBin() {
+	var courseBin = Alloy.Collections.cbin;
 	
-	//courseBin = Alloy.createCollection("CBin");
+
 	var pLen = courseBin.length;
-	
-	try{
-		courseBin.add(section);
-		console.log(Alloy.Collections.cbin.length);
+	var mm;
+	//console.log(courseBin.where({SECTION : section.get("SECTION").length}) );
+	if (courseBin.where({SECTION : section.get("SECTION")}).length < 1) {
+		try {
+			Ti.App.fireEvent("upSec",section.toJSON());
+			console.log(Alloy.Collections.cbin.length);
+			
+		} catch(e) {
+			console.log(e);
+		}
 	}
-	catch(e){
-		console.log(e);
-	}
-	
-	var nLen = courseBin.length;
-	if ( nLen == pLen + 1)
-		alert("Successfully added to CourseBin.");
-	else {
+	else{
 		alert("Already added.");
 	}
 }
+
+
+
+function addToCal(section) {
+	if(!startTime || !endTime)
+	return;
+	var time0 = startTime.split(":"); 
+	var timef = endTime.split(":");	
+	var index = 0;
+	var j = timef[0] - time0[0];
+//	console.log("jjjjjjjjjjjjjjjjjjjjj" + j);
+	if (time0 && timef){
+		index = time0[0] - 8;
+		rowIndex = index;
+		
+		//console.log("rowIndex :" + rowIndex);
+	}
+	else{
+		alert("Failed to add in to calendar");
+	}
+	
+	
+	
+	var len = day ? day.length : 0;
+	var i;
+	var output = "|";
+	for (i = 0; i<len; i++){
+	
+
+	if (day[i] == "M"){
+		j = timef[0] - time0[0];
+		var titleLen = tableMon[index].title.length;		
+		if(titleLen > startTime.length){
+			globalJ = j;
+			confIndex = index;
+			if (flag1 == 0){
+				alert("Error: Time table conflict!");
+				flag1++;	
+			}							
+		}
+		else{
+			if (flag2 == 0){
+				alert("Add in to calendar successfully");
+				flag2++;
+			}	
+		}
+		
+		tableMon[index] = {title:  startTime + "\t" + courseName};
+		
+		while (j>0) {
+			tableMon[index + j] = {title: endTime + "\t\t"};
+			j--;	
+		}
+		
+	
+//		console.log("helloaaaaa" + tableMon[index].title);
+
+		Ti.App.fireEvent("updateTable1");
+	}
+	
+	else if (day[i] == "T"){
+		j = timef[0] - time0[0];
+		var titleLen = tableTue[index].title.length;		
+		
+	if(titleLen > startTime.length){
+			globalJ = j;
+			confIndex = index;
+			if (flag1 == 0){
+				alert("Error: Time table conflict!");
+				flag1++;	
+			}							
+		}
+		else{
+			if (flag2 == 0){
+				alert("Add in to calendar successfully");
+				flag2++;
+			}	
+		}
+
+		console.log("test" + startTime + courseName);
+		tableTue[index] = {title:  startTime + "\t" + courseName};
+		
+		while (j>0) {
+			tableTue[index + j] = {title: endTime + "\t\t"};
+			j--;	
+		}
+		
+		Ti.App.fireEvent("updateTable2");
+	}
+	
+	else if (day[i] == "W"){
+		j = timef[0] - time0[0];
+		var titleLen = tableWed[index].title.length;		
+		
+		if(titleLen > startTime.length){
+			globalJ = j;
+			confIndex = index;
+			if (flag1 == 0){
+				alert("Error: Time table conflict!");
+				flag1++;	
+			}							
+		}
+		else{
+			if (flag2 == 0){
+				alert("Add in to calendar successfully");
+				flag2++;
+			}	
+		}
+		
+		console.log(courseName);
+		tableWed[index] = {title:  startTime + "\t" + courseName};
+		
+		while (j>0) {
+			tableWed[index + j] = {title: endTime + "\t\t"};
+			j--;	
+		}
+		
+		Ti.App.fireEvent("updateTable3");
+	}
+	
+	else if (day[i] == "H"){
+		j = timef[0] - time0[0];
+		
+		var titleLen = tableThu[index].title.length;		
+		
+		if(titleLen > startTime.length){
+			globalJ = j;
+			confIndex = index;
+			if (flag1 == 0){
+				alert("Error: Time table conflict!");
+				flag1++;	
+			}							
+		}
+		else{
+			if (flag2 == 0){
+				alert("Add in to calendar successfully");
+				flag2++;
+			}	
+		}
+
+		console.log(courseName);
+
+		tableThu[index] = {title:  startTime + "\t" + courseName};
+		
+		while (j>0) {
+			tableThu[index + j] = {title: endTime + "\t\t"};
+			j--;	
+		}
+		
+		Ti.App.fireEvent("updateTable4");
+	}
+	
+	else if (day[i] == "F"){
+		console.log(courseName);
+		j = timef[0] - time0[0];
+		var titleLen = tableFri[index].title.length;		
+		
+		if(titleLen > startTime.length){
+			globalJ = j;
+			confIndex = index;
+			if (flag1 == 0){
+				alert("Error: Time table conflict!");
+				flag1++;	
+			}							
+		}
+		else{
+			if (flag2 == 0){
+				alert("Add in to calendar successfully");
+				flag2++;
+			}	
+		}
+		
+
+		tableFri[index] = {title:  startTime + "\t" + courseName};
+		
+		while (j>0) {
+		tableFri[index + j] = {title: endTime + "\t\t"};
+			j--;	
+		}
+		
+		Ti.App.fireEvent("updateTable5");
+	}
+	
+	else{
+		alert("No such day");
+		}
+	}			
+}
+
 
 $.sectionDetail.addEventListener('close', function() {
 	$.destroy();

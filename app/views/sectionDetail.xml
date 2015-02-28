@@ -1,19 +1,19 @@
 <Alloy>
-	<ScrollView layout="vertical" bottom="0">
-		<View id = "content" layout="vertical">
-				<Label id = "secId"></Label>
-				<Label id = "secType"></Label>
-				<Label id = "secUnit"></Label>
-				<Label id = "secTime"></Label>			
-				<Label id = "secDay"></Label>
-				<Label id = "secRoom"></Label>
-				<Label id = "secProf"></Label>
-		</View>	
+	<ScrollView layout="vertical">
+		<TableView id = "content" layout="vertical">
+				<TableViewRow id = "secId"></TableViewRow>
+				<TableViewRow id = "secType"></TableViewRow>
+				<TableViewRow id = "secUnit"></TableViewRow>
+				<TableViewRow id = "secTime"></TableViewRow>			
+				<TableViewRow id = "secDay"></TableViewRow>
+				<TableViewRow id = "secRoom"></TableViewRow>
+				<TableViewRow id = "secProf"></TableViewRow>
+		</TableView>	
 		
 		<View id = "button" layout="horizontal">
-			<Button id="btnToBin" title ="Add" onClick="addToBin"></Button>
-			<Button id="btnReg"title ="Register" ></Button>
+			<View class="btnWrap"><Button id ="btnToBin" onClick="addToBin"></Button></View>
+			<View class="btnWrap"><Button id ="btnReg" onClick="addToCal"></Button></View>
 		</View>	
-
+		
 	</ScrollView>
 </Alloy>

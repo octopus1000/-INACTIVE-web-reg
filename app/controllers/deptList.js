@@ -69,7 +69,7 @@ function close(){
 var count = true;
 function transColor(model){
 	var tran = model.toJSON();
-	tran.color = count? "#F7F7F7":"#D7D7D7",
+	tran.color = count? "#FFF":"#F7F7F7",
 	count = !count;
 	return tran;
 }

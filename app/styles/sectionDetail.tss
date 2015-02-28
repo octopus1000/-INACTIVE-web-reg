@@ -1,63 +1,49 @@
 
 "ScrollView":{
-		backgroundColor: "white",
-		height: "90%",
-		contentHeight : "90%"
-
-}
+	width:'90%',
+		height: "95%",
+		contentHeight: "95%",
+		backgroundColor:"white",
+		borderRadius:'10dp',
+		opacity:'0.8'
+	}
 
 "#content":{
-	borderColor:"FF3B30",
-	borderWidth:"2",
-
-	top: "10%",
-	
-	height:"180",
-	width: '65%',
+	//borderColor:"FF3B30",
+	//borderWidth:"2",
+	top:'10dp',
+	opacity:'1',
+	height:"220dp",
+	width: '100%',
 	//bottom: "10",
 	textAlign:"left"
+},
 
-	
-}
-
-
-
-"#button":{
-		width: '65%',
-		bottom: "10"	
-}
+".btnWrap":{
+	width:'50%'
+},
 
 "#btnToBin":{
-	backgroundColor: "yellow",
-	height: 35,
-	top:3,
-	left:'10%',
-	width: '35%',
-		titleAttributes:{
-		color: "#FFF"
-	}
+	backgroundImage:"tick.png",
+	height: '35dp',
+	width:'35dp',
+	left:'50dp'
 }
 
 "#btnReg":{
-	backgroundColor: "yellow",
-	height: 35,
-	top:3,
-	left:'10%',
-	width: '35%',
-	
-	titleAttributes:{
-		color: "#FFF"
-	}
+	backgroundImage:"plus.png",
+	height: '35dp',
+	width: '35dp',
+	right:'50dp'
 }
 
-"Label":{
-	top: 5,
+"TableViewRow":{
 	left: 5,
 	textAlign:"left",	
 
 	width:"auto",
 
-	height:"20",
+	height:"30",
 	    font: {
         fontSize:"16dp",
      //   fontWeight:'bold'

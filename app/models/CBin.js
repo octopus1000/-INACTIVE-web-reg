@@ -1,10 +1,21 @@
+//var moment = require('alloy/moment');
+
 exports.definition = {
 	config: {
-
-		adapter: {
-			type: "properties",
-			collection_name: "cbin",
-			idAttribute:"SECTION_ID"
+		"columns": {
+			"SECTION":"text",
+			"TYPE": "text",
+			"REGISTERED": "text",
+			"BEGIN_TIME":"text",
+			"END_TIME":"text",
+			"DAY":"text",
+			"LOCATION":"text",
+			"INSTRUCTOR":"text",
+			"SIS_COURSE_ID":"text"
+		},
+		"adapter": {
+			"type": "sql",
+			"collection_name": "cbin"
 		}
 	},
 	extendModel: function(Model) {

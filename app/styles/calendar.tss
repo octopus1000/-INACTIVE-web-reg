@@ -1,5 +1,17 @@
-"#switchDate":{
+"#swither":{
 	top : 0,
 	width: Ti.UI.FILL,
 	height: 30
+}
+"#switchDay":{
+	width: Ti.UI.FILL,
+	borderColor:"FF3B30",
+	tintColor:"FF3B30"
+}
+
+"#dayCal":{
+		top : 30,
+	width: Ti.UI.FILL,
+
+	
 }
