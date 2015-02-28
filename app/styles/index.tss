@@ -18,5 +18,6 @@
 	barColor:"#FF3B30",
 	navTintColor: "#FFF",
 	tabsBackgroundColor: "#FFF",
+	activeTabIconTint: "#FF3B30"
 }
 
