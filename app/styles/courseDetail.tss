@@ -5,25 +5,50 @@
 		colors:[{color:'#F7F7F7'},{color:'#D7D7D7'}]
 	}
 	
-}
-
-
-
+},
 "#courseTitle": {
 	top: "10dp", 
+	height:'18sp',
 	width:"90%",
 	textAlign:"center",
+	minimumFontSize:"10sp",
 	font: {
-        fontSize: 15,
+        fontSize: "14sp",
         fontWeight: 'bold'
    }
 },
 
+".line":{
+	borderWidth:'1dp',
+	borderColor:'#c7c7c7',
+	height:'1dp',
+	width:'90%'
+},
+
 "#courseDescription":{
 	top: "5dp",
+	height:'50dp',
 	width:"90%",
 		font: {
         fontSize: 12,
         fontWeight: 'ultra'
    }
+},
+"#picker":{
+	height:'30dp',
+	width:'90%',
+	borderRadius:'10dp',
+	opacity:'0.8',
+	zIndex:'99',
+	//backgroundColor:'#aaa',
+	font:{
+		fontSize:'12sp'
+	}
+},
+"#secListInd":{
+	height:'14sp',
+	color:'#aaa',
+	font:{
+		fontSize:'12sp'
+	}
 }

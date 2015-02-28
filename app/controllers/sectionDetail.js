@@ -30,7 +30,7 @@ function showSection(section) {
 		$.secType.setTitle("Type: " + section.get("TYPE"));
 	}
 	else{
-		$.secId.setTitle("Type: N/A");
+		$.secType.setTitle("Type: N/A");
 	}
 	
 	if (section.get("REGISTERED")){

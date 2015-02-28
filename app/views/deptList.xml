@@ -1,6 +1,6 @@
 <Alloy>
 	<Collection src="Dept"></Collection>
-	<Window id = "mainWin" title ="Departments" class="container" onClose="close" layout="vertical">							
+	<Window id = "mainWin" title ="Dept" class="container" onClose="close" layout="vertical">							
 <!--<ActivityIndicator id="indicator" message="Loading..."/><View backgroundColor = "#C7C7CC" borderColor = "#C7C7CC" height = 15 top = 0><Label id="schoolLabel">(school name)</Label></View>-->				
 		<TableView id = "tableView" headTitle="school of ..."  dataCollection="Dept" dataFilter="filter" onClick="showCourseList" dataTransform = "transColor">		
 			<SearchBar id="search" top= 0 borderColor = "#C7C7CC" height = 15 />					

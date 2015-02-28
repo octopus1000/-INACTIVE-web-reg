@@ -1,7 +1,10 @@
 <Alloy>
 	<Window id = "courseDetailWindow" class="container" layout="vertical">
 		<Label id="courseTitle">CLASS DESCRIPTION</Label>
-		<Label id="courseDescription">class detail</Label>
+		<View class="line"></View>
+		<Label id="courseDescription" onClick="showDesp">class detail</Label>
+		<Label id="secListInd">---Section List---</Label>
+		<TableView id="picker" onClick="showPicker"></TableView>
 		<!--<ScrollableView id="scrollableView" showPagingControl="true">
 	</ScrollableView>-->
 	</Window>

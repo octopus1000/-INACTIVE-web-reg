@@ -1,7 +1,7 @@
 <Alloy>
 	<Collection src="Course"></Collection>
 
-	<Window id = "mainWin" title="Course List" class="container">		
+	<Window id = "mainWin" title="Course" class="container">		
 		
 		<ActivityIndicator id="indicator" message="Loading..."/> 
 		<TableView id="courseTable" onClick="showCourseDetail" dataTransform = "transColor">
