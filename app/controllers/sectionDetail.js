@@ -1,6 +1,5 @@
 var args = arguments[0] || {};
 var section = Alloy.createModel("Section");
-var courseBin = Alloy.Collections.cbin;
 var day;
 init(args.sec);
 if (section) {
@@ -105,22 +104,21 @@ function showDay(section){
 }
 
 function addToBin() {
+	var courseBin = Alloy.Collections.cbin;
 	
-	//courseBin = Alloy.createCollection("CBin");
 	var pLen = courseBin.length;
-	
-	try{
-		courseBin.add(section);
-		console.log(Alloy.Collections.cbin.length);
+	var mm;
+	//console.log(courseBin.where({SECTION : section.get("SECTION").length}) );
+	if (courseBin.where({SECTION : section.get("SECTION")}).length < 1) {
+		try {
+			Ti.App.fireEvent("upSec",section.toJSON());
+			console.log(Alloy.Collections.cbin.length);
+			
+		} catch(e) {
+			console.log(e);
+		}
 	}
-	catch(e){
-		console.log(e);
-	}
-	
-	var nLen = courseBin.length;
-	if ( nLen == pLen + 1)
-		alert("Successfully added to CourseBin.");
-	else {
+	else{
 		alert("Already added.");
 	}
 }

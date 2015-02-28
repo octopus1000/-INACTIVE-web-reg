@@ -5,7 +5,7 @@
 			<View class="wrap" layout="horizontal">
 			<Label class="rowLabel">{SIS_COURSE_ID}</Label>
 			<Button class="plus"></Button>
-			<Button class="cross" onClick="remove" section="{SECTION_ID}"></Button>
+			<Button class="cross" onClick="remove" section="{SECTION}"></Button>
 			</View>
 			<View layout="vertical">
 				<View class="labelView"><Label>{secId}</Label></View>

@@ -1,5 +1,3 @@
-var courseBin = Alloy.Collections.cbin;
-
 function swipe(e){
 	
 	if(!e.row)
@@ -19,10 +17,14 @@ function swipe(e){
 	}
 }
 function remove(e){
+	var courseBin = Alloy.Collections.cbin;
 	secid = e.source.section;
-	courseBin.remove(courseBin.where({SECTION_ID:secid})[0]);
+	var model = courseBin.where({SECTION:secid})[0]; 
+	courseBin.remove(model);
+	model.destroy();
 }
 function showSection(e){
+	var courseBin = Alloy.Collections.cbin;
 	var args = {
 			section: courseBin.at(e.index)
 		};

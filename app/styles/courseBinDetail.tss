@@ -32,7 +32,7 @@
 ".rowLabel":{
 	borderWidth:0,
 	left:'20dp',
-	width:"300dp",
+	width:"350dp",
 	height:"50dp"
 },
 
