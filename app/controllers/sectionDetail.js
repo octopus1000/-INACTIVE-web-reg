@@ -1,10 +1,8 @@
 var args = arguments[0] || {};
 var section = Alloy.createModel("Section");
-<<<<<<< Updated upstream
-=======
-var courseBin = Alloy.Collections.cbin;
+
 var calendar = Alloy.Collections.cbin;
->>>>>>> Stashed changes
+
 var day;
 var courseName;
 
@@ -103,7 +101,7 @@ function showDay(section){
 function addToBin() {
 	var courseBin = Alloy.Collections.cbin;
 	
-<<<<<<< Updated upstream
+
 	var pLen = courseBin.length;
 	var mm;
 	//console.log(courseBin.where({SECTION : section.get("SECTION").length}) );
@@ -117,23 +115,6 @@ function addToBin() {
 		}
 	}
 	else{
-=======
-	//courseBin = Alloy.createCollection("CBin");
-	var pLen = calendar.length;
-	
-	try{
-		calendar.add(section);
-		console.log(Alloy.Collections.cbin.length);
-	}
-	catch(e){
-		console.log(e);
-	}
-	
-	var nLen = calendar.length;
-	if ( nLen == pLen + 1)
-		alert("Successfully added to CourseBin.");
-	else {
->>>>>>> Stashed changes
 		alert("Already added.");
 	}
 }

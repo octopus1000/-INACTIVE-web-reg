@@ -14,11 +14,8 @@
 
 
 var Backbone = require("alloy/backbone");
-<<<<<<< Updated upstream
 
 Alloy.Collections.cbin = Alloy.createCollection('cbin');
-=======
-Alloy.Collections.cbin = Alloy.createCollection("cbin");
 
 var tableMon = [{title: "08:00"}, {title: "09:00"},{title: "10:00"},{title: "11:00"},{title: "12:00"},{title: "13:00"},{title: "14:00"},{title: "15:00"},{title: "16:00"},{title: "17:00"},{title: "18:00"},{title: "19:00"},{title: "20:00"},{title: "21:00"},{title: "22:00"}];
 var tableTue = [{title: "08:00"}, {title: "09:00"},{title: "10:00"},{title: "11:00"},{title: "12:00"},{title: "13:00"},{title: "14:00"},{title: "15:00"},{title: "16:00"},{title: "17:00"},{title: "18:00"},{title: "19:00"},{title: "20:00"},{title: "21:00"},{title: "22:00"}];
@@ -100,4 +97,3 @@ function updateTable(theDay, table){
 		conf(table);
 
 }
->>>>>>> Stashed changes
