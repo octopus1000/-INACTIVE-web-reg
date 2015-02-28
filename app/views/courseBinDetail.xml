@@ -4,7 +4,7 @@
 		<TableViewRow layout="vertical">
 			<View class="wrap" layout="horizontal">
 			<Label class="rowLabel">{SIS_COURSE_ID}</Label>
-			<Button class="plus"></Button>
+			<Button class="plus" onClick="register" section="{SECTION}"></Button>
 			<Button class="cross" onClick="remove" section="{SECTION}"></Button>
 			</View>
 			<View layout="vertical">

@@ -1,5 +1,4 @@
 <Alloy>
-	<Window backgroundColor="white">
 	<TabGroup>
 		<Tab id="tab1" title="Register" icon="registration.png">
 			<Window id="mainWin" class="container" title="School">
@@ -19,5 +18,4 @@
 			</Window>
 		</Tab>
 	</TabGroup>
-	</Window>
 </Alloy>

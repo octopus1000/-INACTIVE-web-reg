@@ -7,6 +7,7 @@ exports.definition = {
 			"TYPE": "text",
 			"REGISTERED": "text",
 			"BEGIN_TIME":"text",
+			"END_TIME":"text",
 			"DAY":"text",
 			"LOCATION":"text",
 			"INSTRUCTOR":"text",
